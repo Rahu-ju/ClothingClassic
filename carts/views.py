@@ -1,14 +1,18 @@
+''' Contains all the cart view.'''
+
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 
 from products.models import Product
-
 from .models import Cart, CartItem
 from .view_helper_functions import retrived_product,retrived_cart, update_cart_total, update_cartitem
 
-# Create your views here.
+
 def view(request):
+    '''Get the cart id from the session, retrive the cart
+    from the database and then pass it to the context dict.'''
+
     # retrive cart from session, making context, render
     try:
         the_id = request.session['cart_id']
@@ -25,9 +29,10 @@ def view(request):
     return render(request, template, context)
 
 
-
-# 
 def update_cart(request, slug):
+    '''Take the product, take the cart then feed to the
+    CartItem. then update cartitem and cart.'''
+
     # retrive the product
     product = retrived_product(slug)
     
