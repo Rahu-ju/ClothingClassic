@@ -30,8 +30,8 @@ def view(request):
 
 
 def update_cart(request, slug):
-    '''Take the product, take the cart then feed to the
-    CartItem. then update cartitem and cart.'''
+    '''Retrive the product and the cart then feed to the
+    CartItem.Then update the cartitem and the cart.'''
 
     # retrive the product
     product = retrived_product(slug)
