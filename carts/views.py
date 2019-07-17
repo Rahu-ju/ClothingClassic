@@ -1,7 +1,7 @@
 ''' Contains all the cart view.'''
 
 from django.shortcuts import render
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, JsonResponse
 from django.urls import reverse
 
 from products.models import Product
@@ -29,7 +29,7 @@ def view(request):
     return render(request, template, context)
 
 
-def update_cart(request, slug):
+def add_to_cart(request, slug):
     '''Retrive the product and the cart then feed to the
     CartItem.Then update the cartitem and the cart.'''
 
@@ -42,10 +42,40 @@ def update_cart(request, slug):
     # Feeding to the CartItem
     cart_item, created = CartItem.objects.get_or_create(cart=cart, product=product)
     
+    # update cartitem and cart
     update_cartitem(request, cart_item)
     update_cart_total(request, cart)
 
     return HttpResponseRedirect(reverse('cart'))
 
 
+def remove_from_cart(request, pk):
+    cart = retrived_cart(request)
+    cart_item = CartItem.objects.filter(cart=cart, pk=pk)
+    cart_item.delete()
+    # message
+    update_cart_total(request, cart)
 
+    return HttpResponseRedirect(reverse('cart'))
+
+
+def update_cart_item(request):
+    '''Update cart Item quantity and also variations(still not applied)'''
+
+    cart = retrived_cart(request)
+    pk = request.GET.get('pk')
+    cart_item = CartItem.objects.get(cart=cart, pk=pk)
+    cart_item.quantity = request.GET.get('qty')
+    cart_item.save()
+    update_cart_total(request, cart)
+
+    if request.is_ajax():
+        line_total = cart_item.line_total
+        cart_total = cart.total
+        print('hi')
+        return JsonResponse({
+            'line_total': line_total,
+            'cart_total': cart_total
+        })
+    
+    return HttpResponseRedirect(reverse('cart'))

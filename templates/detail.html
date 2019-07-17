@@ -42,7 +42,7 @@
                 </div>
               </div>
               <p class="mb-4 text-muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco</p>
-              <form action="{% url 'cart_update' product.slug %}" method='POST'>
+              <form action="{% url 'add_to_cart' product.slug %}" method='POST'>
                 {% csrf_token %}
                 <div class="row">
                   {% comment %} if variation exist then it shows {% endcomment %}

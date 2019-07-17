@@ -7,7 +7,7 @@ def retrived_product(slug):
     try:
         product = Product.objects.get(slug=slug)
         return product
-    except Product.DoesNotExists:
+    except Product.DoesNotExist:
         pass
     except:
         pass
@@ -25,18 +25,6 @@ def retrived_cart(request):
 
     return cart
 
-def update_cart_total(request, cart):
-
-    new_total = 0.00
-    for item in cart.cartitem_set.all():
-        line_total = float(item.product.price) * item.quantity
-        item.line_total = line_total
-        item.save()
-        new_total += line_total
-    cart.total = new_total
-    cart.save()
-
-    request.session['items_total'] = cart.cartitem_set.count()
 
 # update cart item from the post form
 def update_cartitem(request, cart_item):
@@ -54,3 +42,17 @@ def update_cartitem(request, cart_item):
             cart_item.save()
         else:
             cart_item.delete()
+
+def update_cart_total(request, cart):
+
+    new_total = 0.00
+    for item in cart.cartitem_set.all():
+        line_total = float(item.product.price) * item.quantity
+        item.line_total = line_total
+        item.save()
+        new_total += line_total
+    cart.total = new_total
+    cart.save()
+
+    request.session['items_total'] = cart.cartitem_set.count()
+

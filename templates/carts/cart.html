@@ -56,13 +56,17 @@
                       <div class="col-2">{{ item.product.price }}</div>
                       <div class="col-2">
                         <div class="d-flex align-items-center">
-                          <div class="btn btn-items btn-items-decrease">-</div>
-                          <input type="text" value="{{ item.quantity }}" class="form-control text-center input-items">
-                          <div class="btn btn-items btn-items-increase">+</div>
+                          <div class="btn btn-items btn-items-decrease click-ajax">-</div>
+                          
+                            <input type='hidden' name='pk' value='{{item.id}}' id='pk'>
+                            <input type="text" name="qty" value="{{ item.quantity }}" class="form-control text-center input-items" id='quantity'>
+                         
+                          
+                          <div class="btn btn-items btn-items-increase click-ajax">+</div>
                         </div>
                       </div>
                       <div class="col-2 text-center">${{ item.line_total }}</div>
-                      <div class="col-1 text-center"><a href="{% url 'cart_update' item.product.slug %}" class="cart-remove"> <i class="fa fa-times"></i></a></div>
+                      <div class="col-1 text-center"><a href="{% url 'remove_from_cart' item.id %}" class="cart-remove"> <i class="fa fa-times"></i></a></div>
                     </div>
                   </div>
                   <!-- Product-->
@@ -134,4 +138,36 @@
     </section>
   {% endif %}
 {% endblock content %}
+{% block jquery %}
+<script>
+// ajax request function
+  function ajax_call(){
+    var pk = $('#pk').val();
+    var quantity = $('#quantity').val();
+    var qty = quantity
+    console.log(pk, qty);
+
+    $.ajax({
+      type: "GET",
+      url : "{% url 'update_cart_item' %}",
+      data: {'pk': pk, 'qty': qty},
+      success: function(data){
+        console.log(data);
+      },
+     
+    });
+  }
+
+  $('#quantity').change(function(){
+    ajax_call();
+  });
+
+  $('.click-ajax').click(function(){
+    ajax_call();
+  });
+
+ 
+</script>
+{% endblock jquery %}
+
    
