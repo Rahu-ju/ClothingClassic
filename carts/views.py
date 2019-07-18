@@ -62,15 +62,16 @@ def remove_from_cart(request, pk):
 def update_cart_item(request):
     '''Update cart Item quantity and also variations(still not applied)'''
 
-    cart = retrived_cart(request)
+    
     pk = request.GET.get('pk')
-    cart_item = CartItem.objects.get(cart=cart, pk=pk)
+    cart_item = CartItem.objects.get(pk=pk)
     cart_item.quantity = request.GET.get('qty')
     cart_item.save()
+    cart = retrived_cart(request)
     update_cart_total(request, cart)
 
     if request.is_ajax():
-        line_total = cart_item.line_total
+        line_total = CartItem.objects.get(pk=pk).line_total
         cart_total = cart.total
         print('hi')
         return JsonResponse({

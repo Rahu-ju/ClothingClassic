@@ -51,7 +51,7 @@ def update_cart_total(request, cart):
         item.line_total = line_total
         item.save()
         new_total += line_total
-    cart.total = new_total
+    cart.total = round(new_total, 2)
     cart.save()
 
     request.session['items_total'] = cart.cartitem_set.count()

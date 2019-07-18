@@ -65,7 +65,7 @@
                           <div class="btn btn-items btn-items-increase click-ajax">+</div>
                         </div>
                       </div>
-                      <div class="col-2 text-center">${{ item.line_total }}</div>
+                      <div class="col-2 text-center">$<span id='line_total'>{{ item.line_total }}</span></div>
                       <div class="col-1 text-center"><a href="{% url 'remove_from_cart' item.id %}" class="cart-remove"> <i class="fa fa-times"></i></a></div>
                     </div>
                   </div>
@@ -125,7 +125,7 @@
               <div class="block-body bg-light pt-1">
                 <p class="text-sm">Shipping and additional costs are calculated based on values you have entered.</p>
                 <ul class="order-summary mb-0 list-unstyled">
-                  <li class="order-summary-item"><span>Order Subtotal </span><span>${{ cart.total }}</span></li>
+                  <li class="order-summary-item"><span>Order Subtotal </span><span>$<span id='cart_total' >{{ cart.total|floatformat:"-1" }}</span></span></li>
                   <li class="order-summary-item"><span>Shipping and handling</span><span>$10.00</span></li>
                   <li class="order-summary-item"><span>Tax</span><span>$0.00</span></li>
                   <li class="order-summary-item border-0"><span>Total</span><strong class="order-summary-total">$400.00</strong></li>
@@ -152,7 +152,9 @@
       url : "{% url 'update_cart_item' %}",
       data: {'pk': pk, 'qty': qty},
       success: function(data){
-        console.log(data);
+        console.log(data)
+        $('#cart_total').text(data.cart_total)
+        $('#line_total').text(data.line_total)
       },
      
     });
