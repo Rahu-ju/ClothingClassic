@@ -65,6 +65,18 @@ def update_cart_item(request):
     
     pk = request.GET.get('pk')
     cart_item = CartItem.objects.get(pk=pk)
+
+    if int(request.GET.get('qty')) <= 0:
+        cart_item.delete()
+        cart = retrived_cart(request)
+        update_cart_total(request, cart)
+        cart_total = cart.total
+        return JsonResponse({
+            'id': pk,
+            'product': 'empty',
+            'cart_total': cart_total
+        })
+        
     cart_item.quantity = request.GET.get('qty')
     cart_item.save()
     cart = retrived_cart(request)

@@ -282,7 +282,9 @@
                     <svg class="svg-icon">
                       <use xlink:href="#cart-1"> </use>
                     </svg>
-                    <div class="navbar-icon-link-badge">{{ request.session.items_total }}</div>
+                    <div class="navbar-icon-link-badge">
+                    {% if request.session %}{{ request.session.items_total }}{% endif %}
+                    </div>
                   </a>
                   <div aria-labelledby="cartdetails" class="dropdown-menu dropdown-menu-right p-4">
                     <div class="navbar-cart-product-wrapper">

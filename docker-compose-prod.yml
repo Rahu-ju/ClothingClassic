@@ -7,9 +7,9 @@ services:
     # command: python /code/manage.py runserver 0.0.0.0:8000
     command: gunicorn ecommerce_project.wsgi:application --bind 0.0.0.0:8000
     environment:
-      - ENVIRONMENT=development
+      - ENVIRONMENT=production
       - SECRET_KEY=@^r7%+ajfq4my-e^cymbs26ah&*$a*y$$j_n3g4a&5+zghtn#i
-      - DEBUG=1
+      - DEBUG=0
       - STRIPE_TEST_PUBLISHABLE_KEY=pk_test_JiImaA2FElgKpEdVbL6poCWT00hDIuqUkf
       - STRIPE_TEST_SECRET_KEY=sk_test_YZiGdAxgs9SUI9MjRy0YPNCr00oZ5ckzG5
     volumes:
@@ -19,10 +19,8 @@ services:
     depends_on:
       - db
 
-  db:
+  db: 
     image: postgres:11
-    volumes:
-      - postgres_data:/var/lib/postgresql/data
+    
 
-volumes:
-  postgres_data:
+

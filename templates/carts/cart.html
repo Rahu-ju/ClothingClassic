@@ -45,7 +45,7 @@
                 {% comment %} Showing all the cart items {% endcomment %}
                 {% for item in cart.cartitem_set.all %}
                   <!-- Product-->
-                  <div class="cart-item">
+                  <div class="cart-item" id='item-{{ item.id }}'>
                     <div class="row d-flex align-items-center text-center">
                       <div class="col-5">
                         <div class="d-flex align-items-center"><a href="{% url 'detail' item.product.slug %}"><img src="{{item.product.get_image_url }}" alt="..." class="cart-item-img"></a>
@@ -56,13 +56,13 @@
                       <div class="col-2">{{ item.product.price }}</div>
                       <div class="col-2">
                         <div class="d-flex align-items-center">
-                          <div class="btn btn-items btn-items-decrease click-ajax">-</div>
+                          <div class="btn btn-items btn-items-decrease click-decrease">-</div>
                           
                             <input type='hidden' name='pk' value='{{item.id}}' id='pk'>
                             <input type="text" name="qty" value="{{ item.quantity }}" class="form-control text-center input-items" id='quantity'>
                          
                           
-                          <div class="btn btn-items btn-items-increase click-ajax">+</div>
+                          <div class="btn btn-items btn-items-increase click-increase">+</div>
                         </div>
                       </div>
                       <div class="col-2 text-center">$<span id='line_total'>{{ item.line_total }}</span></div>
@@ -141,11 +141,18 @@
 {% block jquery %}
 <script>
 // ajax request function
-  function ajax_call(){
+  function ajax_call(number){
     var pk = $('#pk').val();
     var quantity = $('#quantity').val();
-    var qty = quantity
+
+    // Calculate wheater it should increase or decrease the quantity
+    if (number){
+       var qty = Number(quantity) + number
+    } else {
+     var qty = quantity
+    }
     console.log(pk, qty);
+   
 
     $.ajax({
       type: "GET",
@@ -155,6 +162,11 @@
         console.log(data)
         $('#cart_total').text(data.cart_total)
         $('#line_total').text(data.line_total)
+        if (data.product == 'empty'){
+          //var item = 'item-' + data.id
+          $('#item-'+data.id).remove()
+        }
+
       },
      
     });
@@ -164,8 +176,11 @@
     ajax_call();
   });
 
-  $('.click-ajax').click(function(){
-    ajax_call();
+  $('.click-increase').click(function(){
+    ajax_call(1);
+  });
+  $('.click-decrease').click(function(){
+    ajax_call(-1);
   });
 
  
