@@ -26,7 +26,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = int(os.environ.get('DEBUG', default=0))
 
-ALLOWED_HOSTS = ['clothingclassic.herokuapp.com', '127.0.0.1', 'localhost',]
+ALLOWED_HOSTS = ['clothingclassic.herokuapp.com', '127.0.0.1', 'localhost','0.0.0.0']
 
 
 # Application definition
@@ -84,10 +84,11 @@ WSGI_APPLICATION = 'ecommerce_project.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'postgres',
-        'USER': 'postgres',
-        'HOST': 'db', # Hostname set in docker-compose.yml
-        'PORT': 5432 # Default postgres port
+        'NAME': os.environ.get('POSTGRES_USER'),
+        'USER': os.environ.get('POSTGRES_USER'),
+        'PASSWORD': os.environ.get('POSTGRES_PASSWORD'),
+        'HOST': os.environ.get('POSTGRES_HOST'), # Hostname set in docker-compose.yml
+        'PORT': os.environ.get('POSTGRES_PORT'), # Default postgres port
     }
 }
 

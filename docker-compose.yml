@@ -8,21 +8,22 @@ services:
     command: gunicorn ecommerce_project.wsgi:application --bind 0.0.0.0:8000
     environment:
       - ENVIRONMENT=development
-      - SECRET_KEY=@^r7%+ajfq4my-e^cymbs26ah&*$a*y$$j_n3g4a&5+zghtn#i
-      - DEBUG=1
-      - STRIPE_TEST_PUBLISHABLE_KEY=pk_test_JiImaA2FElgKpEdVbL6poCWT00hDIuqUkf
-      - STRIPE_TEST_SECRET_KEY=sk_test_YZiGdAxgs9SUI9MjRy0YPNCr00oZ5ckzG5
+    env_file: .env
+
     volumes:
       - .:/code
     ports:
       - 8000:8000
     depends_on:
       - db
-
+  
   db:
-    image: postgres:11
+    image: postgres:10
+    env_file: .env.db
     volumes:
       - postgres_data:/var/lib/postgresql/data
+  
+
 
 volumes:
   postgres_data:

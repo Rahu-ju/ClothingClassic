@@ -11,8 +11,9 @@ WORKDIR /code
 # Install dependencies
 RUN pip install --upgrade pip
 RUN pip install pipenv
-COPY Pipfile Pipfile.lock /code/
+COPY Pipfile /code/
 RUN pipenv install --skip-lock --system --dev
+
 
 # Copy current dir project and paste into WORKDIR inside the docker
 COPY . /code/
