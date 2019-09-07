@@ -8,12 +8,16 @@ services:
     command: gunicorn ecommerce_project.wsgi:application --bind 0.0.0.0:8000
     environment:
       - ENVIRONMENT=development
+      - DEBUG=1
     env_file: .env
 
     volumes:
       - .:/code
-    ports:
-      - 8000:8000
+      - static_volume:/code/staticfiles
+      - media_volume:/code/mediafiles
+    expose:
+      - 8000
+    
     depends_on:
       - db
   
@@ -22,8 +26,20 @@ services:
     env_file: .env.db
     volumes:
       - postgres_data:/var/lib/postgresql/data
+
+  nginx:
+    build: ./nginx
+    volumes:
+      - static_volume:/code/staticfiles
+      - media_volume:/code/mediafiles
+    ports:
+      - 8000:80
+    depends_on:
+      - web
   
 
 
 volumes:
   postgres_data:
+  static_volume:
+  media_volume:

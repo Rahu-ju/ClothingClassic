@@ -26,7 +26,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = int(os.environ.get('DEBUG', default=0))
 
-ALLOWED_HOSTS = ['clothingclassic.herokuapp.com', '127.0.0.1', 'localhost','0.0.0.0']
+ALLOWED_HOSTS = ['clothingclassic.herokuapp.com', '127.0.0.1', 'localhost','0.0.0.0',]
 
 
 # Application definition
@@ -38,7 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     # whitenoise for static files
-    'whitenoise.runserver_nostatic',
+    # 'whitenoise.runserver_nostatic',
     'django.contrib.staticfiles',
 
     # Local apps 
@@ -48,7 +48,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware', # for whitenoise
+    # 'whitenoise.middleware.WhiteNoiseMiddleware', # for whitenoise
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -129,11 +129,12 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
-STATIC_URL = '/static/'
-MEDIA_URL ='/media/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'),]
-STATIC_ROOT = os.path.join(BASE_DIR, 'static_cdn')
-MEDIA_ROOT = os.path.join(BASE_DIR, 'static_cdn/media')
+STATIC_URL = '/staticfiles/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+MEDIA_URL ='/mediafiles/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'mediafiles')
 
 # Stripe
 STRIPE_TEST_PUBLISHABLE_KEY = os.environ.get('STRIPE_TEST_PUBLISHABLE_KEY')

@@ -14,6 +14,6 @@ RUN pip install pipenv
 COPY Pipfile /code/
 RUN pipenv install --skip-lock --system --dev
 
-
 # Copy current dir project and paste into WORKDIR inside the docker
 COPY . /code/
+
