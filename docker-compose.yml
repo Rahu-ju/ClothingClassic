@@ -15,9 +15,9 @@ services:
       - .:/code
       - static_volume:/code/staticfiles
       - media_volume:/code/mediafiles
-    expose:
-      - 8000
-    
+    networks:
+      - nginx_network
+      - db_network
     depends_on:
       - db
   
@@ -26,6 +26,8 @@ services:
     env_file: .env.db
     volumes:
       - postgres_data:/var/lib/postgresql/data
+    networks:
+      - db_network
 
   nginx:
     build: ./nginx
@@ -33,11 +35,17 @@ services:
       - static_volume:/code/staticfiles
       - media_volume:/code/mediafiles
     ports:
-      - 8000:80
+      - 4000:4000
+    networks:
+      - nginx_network
     depends_on:
       - web
   
-
+networks:
+  nginx_network:
+    driver: bridge
+  db_network:
+    driver: bridge
 
 volumes:
   postgres_data:
