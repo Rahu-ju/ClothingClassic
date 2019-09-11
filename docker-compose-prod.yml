@@ -34,8 +34,8 @@ services:
     volumes:
       - static_volume:/code/staticfiles
       - media_volume:/code/mediafiles
-    ports:
-      - 4000
+    # ports:
+    #   - 4000
     networks:
       - nginx_network
     depends_on:
