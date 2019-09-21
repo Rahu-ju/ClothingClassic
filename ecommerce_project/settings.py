@@ -37,14 +37,26 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    # whitenoise for static files
-    'whitenoise.runserver_nostatic',
+    'whitenoise.runserver_nostatic', # whitenoise for static files
     'django.contrib.staticfiles',
 
+    #needed for django all-auth
+    'django.contrib.sites', 
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    # user can sign in using the providers
+    'allauth.socialaccount.providers.google',
+    'allauth.socialaccount.providers.twitter',
+    'allauth.socialaccount.providers.facebook',
+
     # Local apps 
+    'users.apps.UsersConfig',
     'products.apps.ProductsConfig',
     'carts.apps.CartsConfig',
+    'orders.apps.OrdersConfig',
 ]
+SITE_ID = 1
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -70,6 +82,8 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                # `allauth` needs this from django
+                'django.template.context_processors.request',
             ],
         },
     },
@@ -136,6 +150,36 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 MEDIA_URL ='/mediafiles/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'mediafiles')
 
+# Telling django to use this Custom user model
+AUTH_USER_MODEL = 'users.CustomUser'
+
+LOGIN_REDIRECT_URL = 'home'
+LOGOUT_REDIRECT_URL = 'home'
+
+# django all-auth configuration
+AUTHENTICATION_BACKENDS = (
+    # Needed to login by username in Django admin, regardless of `allauth`
+    'django.contrib.auth.backends.ModelBackend',
+
+    # `allauth` specific authentication methods, such as login by e-mail
+    'allauth.account.auth_backends.AuthenticationBackend',
+)
+
+ACCOUNT_AUTHENTICATION_METHOD = 'email'
+ACCOUNT_EMAIL_REQUIRED = True
+
+SOCIALACCOUNT_PROVIDERS = {
+    'google': {
+        'SCOPE': [
+            'profile',
+            'email',
+        ],
+        'AUTH_PARAMS': {
+            'access_type': 'offline',
+        }
+    }
+}
+
 # Stripe
 STRIPE_TEST_PUBLISHABLE_KEY = os.environ.get('STRIPE_TEST_PUBLISHABLE_KEY')
 STRIPE_TEST_SECRET_KEY = os.environ.get('STRIPE_TEST_SECRET_KEY')
@@ -157,3 +201,4 @@ if ENVIRONMENT == 'production':
 import dj_database_url
 db_from_env = dj_database_url.config(conn_max_age=500)
 DATABASES['default'].update(db_from_env)
+

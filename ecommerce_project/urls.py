@@ -20,10 +20,18 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+
+    # account
+    path('accounts/', include('allauth.urls')),
+
     # products app urls
     path('', include('products.urls')),
+    
     # carts app url
-    path('cart/', include('carts.urls'))
+    path('cart/', include('carts.urls')),
+
+    # orders app urls
+    path('order/', include('orders.urls')),
 ]
 
 # Load static files in local development
