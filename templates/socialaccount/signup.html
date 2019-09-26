@@ -1,5 +1,7 @@
 {% extends 'base.html' %}
-{% load account socialaccount %}
+{% load i18n %}
+{% block title %}{% trans "Signup" %}{% endblock %}
+
 {% block content %}
  <!-- Hero Section-->
     <section class="hero">
@@ -25,11 +27,15 @@
                 <h6 class="text-uppercase mb-0">New account</h6>
               </div>
               <div class="block-body"> 
-                <p class="lead">Not our registered customer yet?</p>
-                <p class="text-muted">With registration with us new world of fashion, fantastic discounts and much more opens to you! The whole process will not take you more than a minute!</p>
+                {% comment %} <p class="lead">Not our registered customer yet?</p> {% endcomment %}
+                <p class="text-muted">
+                  {% blocktrans with provider_name=account.get_provider.name site_name=site.name %}You are about to use your {{provider_name}} account to login to
+                    {{site_name}}. As a final step, please complete the following form:{% endblocktrans %}
+                </p>
                 <p class="text-muted">If you have any questions, please feel free to <a href="contact.html">contact us</a>, our customer service center is working for you 24/7.</p>
                 <hr>
-                <form action="" method="get">
+                <form action="{% url 'socialaccount_signup' %}" method="post">
+                {% csrf_token %}
                   <div class="form-group">
                     <label for="name" class="form-label">Name</label>
                     <input id="name" type="text" class="form-control">
