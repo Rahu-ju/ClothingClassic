@@ -263,23 +263,57 @@
             <div class="d-flex align-items-center justify-content-between justify-content-lg-end mt-1 mb-2 my-lg-0">
               <!-- Search Button-->
               <div data-toggle="search" class="nav-item navbar-icon-link">
-                <i class="fa fa-search"></i>
+                {% comment %} search icon {% endcomment %}
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" id="search-1" width="100%" height="100%" class='svg-icon'>
+                  <title>Search</title>
+                  <desc>A line styled icon from Orion Icon Library.</desc>
+                  <path data-name="layer2" fill="none" stroke="#202020" stroke-miterlimit="10" d="M39.049 39.049L56 56" stroke-linejoin="round" stroke-linecap="round" style="stroke:var(--layer1, #202020)"></path>
+                  <circle data-name="layer1" cx="27" cy="27" r="17" fill="none" stroke="#202020" stroke-miterlimit="10" stroke-linejoin="round" stroke-linecap="round" style="stroke:var(--layer1, #202020)"></circle>
+                </svg>
               </div>
               <!-- User Not Logged - link to login page-->
-              <div class="nav-item">
-                <a href="{% url 'account_login' %}" class="navbar-icon-link">
-                  <i class="fa fa-user"></i>
-                  <span class="text-sm ml-2 ml-lg-0 text-uppercase text-sm font-weight-bold d-none d-sm-inline d-lg-none">Log in</span>
-                </a>
-              </div>
+              {% if user.is_authenticated %}
+                <div class="nav-item">
+                  <a href="{% url 'account_logout' %}" class="navbar-icon-link">
+                    {% comment %} user icon {% endcomment %}
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" id="male-user-1" width="25px" height="25px" class='svg-icon'>
+                      <title>Male User</title>
+                      <desc>A line styled icon from Orion Icon Library.</desc>
+                      <path data-name="layer2" d="M50.9 55.3a12.2 12.2 0 0 0-4.3-1.7c-8.1-1.5-8.1-4.1-8.1-5.7v-1a14.8 14.8 0 0 0 4.2-7.1c2.5 0 3-5.1 3-5.9s.1-3.8-2.4-3.8c5.4-14.6-8.9-20.5-19.6-13-4.4 0-4.8 6.5-3.1 13-2.5 0-2.4 3.1-2.4 3.8s.6 5.9 3 5.9a14.8 14.8 0 0 0 4.3 7.2v1c0 1.6 0 4.2-8.1 5.7a11.9 11.9 0 0 0-4.3 1.6" fill="none" stroke="#202020" stroke-miterlimit="10" stroke-linejoin="round" stroke-linecap="round" style="stroke:var(--layer1, #202020)"></path>
+                      <circle data-name="layer1" cx="32" cy="32" r="30" fill="none" stroke="#202020" stroke-miterlimit="10" stroke-linejoin="round" stroke-linecap="round" style="stroke:var(--layer1, #202020)"></circle>
+                    </svg>
+                    <span class="text-sm ml-2 ml-lg-0 text-uppercase text-sm font-weight-bold d-none d-sm-inline d-lg-none">Log in</span>
+                  </a>
+                </div>
+              {% else %}
+                <div class="nav-item">
+                  <a href="{% url 'account_login' %}" class="navbar-icon-link">
+                    {% comment %} user icon {% endcomment %}
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" id="male-user-1" width="25px" height="25px" class='svg-icon'>
+                      <title>Male User</title>
+                      <desc>A line styled icon from Orion Icon Library.</desc>
+                      <path data-name="layer2" d="M50.9 55.3a12.2 12.2 0 0 0-4.3-1.7c-8.1-1.5-8.1-4.1-8.1-5.7v-1a14.8 14.8 0 0 0 4.2-7.1c2.5 0 3-5.1 3-5.9s.1-3.8-2.4-3.8c5.4-14.6-8.9-20.5-19.6-13-4.4 0-4.8 6.5-3.1 13-2.5 0-2.4 3.1-2.4 3.8s.6 5.9 3 5.9a14.8 14.8 0 0 0 4.3 7.2v1c0 1.6 0 4.2-8.1 5.7a11.9 11.9 0 0 0-4.3 1.6" fill="none" stroke="#202020" stroke-miterlimit="10" stroke-linejoin="round" stroke-linecap="round" style="stroke:var(--layer1, #202020)"></path>
+                      <circle data-name="layer1" cx="32" cy="32" r="30" fill="none" stroke="#202020" stroke-miterlimit="10" stroke-linejoin="round" stroke-linecap="round" style="stroke:var(--layer1, #202020)"></circle>
+                    </svg>
+                    <span class="text-sm ml-2 ml-lg-0 text-uppercase text-sm font-weight-bold d-none d-sm-inline d-lg-none">Log in</span>
+                  </a>
+                </div>
+              {% endif %}
               <!-- Cart Dropdown-->
-              <div class="nav-item dropdown"><a href="cart.html" class="navbar-icon-link d-lg-none"> 
-                  <i class="fa fa-shopping-cart"></i>
-                  <span class="text-sm ml-2 ml-lg-0 text-uppercase text-sm font-weight-bold d-none d-sm-inline d-lg-none">View cart</span></a>
+              <div class="nav-item dropdown">
+                <a href="cart.html" class="navbar-icon-link d-lg-none"> 
+                  <span class="text-sm ml-2 ml-lg-0 text-uppercase text-sm font-weight-bold d-none d-sm-inline d-lg-none">View cart</span>
+                </a>
                 <div class="d-none d-lg-block">
                   <a id="cartdetails" href="cart.html" data-target="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="navbar-icon-link dropdown-toggle">
-                    
-                   <i class="fa fa-shopping-cart"></i>
+                  {% comment %} cart icon {% endcomment %}
+                   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" id="cart-1" width="100%" height="100%" class='svg-icon'>
+                      <title>Cart</title>
+                      <desc>A line styled icon from Orion Icon Library.</desc>
+                      <path data-name="layer2" fill="none" stroke="#202020" stroke-miterlimit="10" d="M2 6h10l10 40h32l8-24H16" stroke-linejoin="round" stroke-linecap="round" style="stroke:var(--layer1, #202020)"></path>
+                      <circle data-name="layer1" cx="23" cy="54" r="4" fill="none" stroke="#202020" stroke-miterlimit="10" stroke-linejoin="round" stroke-linecap="round" style="stroke:var(--layer1, #202020)"></circle>
+                      <circle data-name="layer1" cx="49" cy="54" r="4" fill="none" stroke="#202020" stroke-miterlimit="10" stroke-linejoin="round" stroke-linecap="round" style="stroke:var(--layer1, #202020)"></circle>
+                    </svg>
                     <div class="navbar-icon-link-badge">
                     {% if request.session %}{{ request.session.items_total }}{% endif %}
                     </div>
