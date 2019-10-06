@@ -151,6 +151,12 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 MEDIA_URL ='/mediafiles/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'mediafiles')
 
+# files store in dropbox
+DEFAULT_FILE_STORAGE = 'storages.backends.dropbox.DropBoxStorage'
+DROPBOX_OAUTH2_TOKEN = 'q22EUto9UmAAAAAAAAAALWfx7gmznWvuQtUrc3jk9LT8vGhuBCRXuGkAXXASb13I'
+
+
+
 # Telling django to use this Custom user model
 AUTH_USER_MODEL = 'users.CustomUser'
 
