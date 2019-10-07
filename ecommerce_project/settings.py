@@ -58,7 +58,7 @@ INSTALLED_APPS = [
     'orders.apps.OrdersConfig',
 
     # third party apps
-    'storages',
+     'storages',
 ]
 SITE_ID = 1
 
@@ -157,7 +157,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'mediafiles')
 # files store in dropbox
 STATICFILES_STORAGE = 'storages.backends.dropbox.DropBoxStorage'
 DEFAULT_FILE_STORAGE = 'storages.backends.dropbox.DropBoxStorage'
-DROPBOX_OAUTH2_TOKEN = 'q22EUto9UmAAAAAAAAAALWfx7gmznWvuQtUrc3jk9LT8vGhuBCRXuGkAXXASb13I'
+DROPBOX_OAUTH2_TOKEN = 'q22EUto9UmAAAAAAAAAAq6PmofCtKsDiyqRlA-pppl0mXF1naZfvzNl0j__aTjj5'
 
 # Telling django to use this Custom user model
 AUTH_USER_MODEL = 'users.CustomUser'
