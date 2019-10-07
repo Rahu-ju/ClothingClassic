@@ -58,7 +58,7 @@ INSTALLED_APPS = [
     'orders.apps.OrdersConfig',
 
     # third party apps
-     'storages',
+    'storages',
 ]
 SITE_ID = 1
 
