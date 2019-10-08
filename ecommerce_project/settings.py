@@ -154,8 +154,8 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 MEDIA_URL ='/mediafiles/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'mediafiles')
 
-# files store in dropbox
-STATICFILES_STORAGE = 'storages.backends.dropbox.DropBoxStorage'
+# files store in dropbox 
+# STATICFILES_STORAGE = 'storages.backends.dropbox.DropBoxStorage'
 DEFAULT_FILE_STORAGE = 'storages.backends.dropbox.DropBoxStorage'
 DROPBOX_OAUTH2_TOKEN = 'q22EUto9UmAAAAAAAAAAq6PmofCtKsDiyqRlA-pppl0mXF1naZfvzNl0j__aTjj5'
 
