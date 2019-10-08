@@ -154,10 +154,12 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 MEDIA_URL ='/mediafiles/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'mediafiles')
 
-# files store in dropbox 
-# STATICFILES_STORAGE = 'storages.backends.dropbox.DropBoxStorage'
+# Static files storage using whitenoise
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+# User upload files and product image storage in dropbox.
 DEFAULT_FILE_STORAGE = 'storages.backends.dropbox.DropBoxStorage'
-DROPBOX_OAUTH2_TOKEN = 'q22EUto9UmAAAAAAAAAAq6PmofCtKsDiyqRlA-pppl0mXF1naZfvzNl0j__aTjj5'
+DROPBOX_OAUTH2_TOKEN = os.environ.get('DROPBOX_OAUTH2_TOKEN')
 
 # Telling django to use this Custom user model
 AUTH_USER_MODEL = 'users.CustomUser'
