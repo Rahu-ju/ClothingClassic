@@ -155,7 +155,7 @@ MEDIA_URL ='/mediafiles/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'mediafiles')
 
 # Static files storage using whitenoise
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+# STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # User upload files and product image storage in dropbox.
 DEFAULT_FILE_STORAGE = 'storages.backends.dropbox.DropBoxStorage'
