@@ -3,15 +3,23 @@
 
 import stripe
 
-from django.contrib.auth.signals import user_logged_in
 from django.conf import settings
+from django.contrib.auth import get_user_model
+from django.dispatch import receiver
 
 from accounts.models import UserStripe
+
+from allauth.account.signals import user_signed_up
 
 
 
 stripe.api_key = settings.STRIPE_TEST_SECRET_KEY
-def get_or_create_stripe(sender, user, *args, **kwargs):
+
+@receiver(user_signed_up)
+def get_or_create_stripe(request, user, **kwargs):
+    print(user.email)
+    # print(sociallogin)
+    
     try:
         user.userstripe.stripe_id
     except UserStripe.DoesNotExist:
@@ -19,7 +27,6 @@ def get_or_create_stripe(sender, user, *args, **kwargs):
         UserStripe.objects.create(user=user, stripe_id=customer.id)
     except:
         pass
-    
-user_logged_in.connect(get_or_create_stripe)
+
 
 

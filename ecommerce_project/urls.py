@@ -24,6 +24,10 @@ urlpatterns = [
     # account
     path('accounts/', include('allauth.urls')),
 
+    # # users app
+    # path('users/', include('users.urls')), # new
+    # path('users/', include('django.contrib.auth.urls')),
+
     # products app urls
     path('', include('products.urls')),
     

@@ -165,8 +165,10 @@ DROPBOX_OAUTH2_TOKEN = os.environ.get('D_OAUTH2_TOKEN')
 # Telling django to use this Custom user model
 AUTH_USER_MODEL = 'users.CustomUser'
 
+# Redirect link after user login or logout
 LOGIN_REDIRECT_URL = 'home'
 LOGOUT_REDIRECT_URL = 'home'
+
 
 # django all-auth configuration
 AUTHENTICATION_BACKENDS = (
@@ -179,6 +181,7 @@ AUTHENTICATION_BACKENDS = (
 
 ACCOUNT_AUTHENTICATION_METHOD = 'email'
 ACCOUNT_EMAIL_REQUIRED = True
+SOCIALACCOUNT_AUTO_SIGNUP = True
 
 # Stripe
 STRIPE_TEST_PUBLISHABLE_KEY = os.environ.get('STRIPE_TEST_PUBLISHABLE_KEY')
