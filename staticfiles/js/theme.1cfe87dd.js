@@ -328,6 +328,8 @@ $(function () {
 
     var homeFullSlider = $('.home-full-slider');
     homeFullSlider.owlCarousel({
+        // autoplay start the slider docu(https://owlcarousel2.github.io/OwlCarousel2/docs/api-options.html)
+        autoplay: true,
         loop: true,
         margin: 0,
         smartSpeed: 500,
