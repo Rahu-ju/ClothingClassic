@@ -348,7 +348,7 @@
                     <!-- total price-->
                     <div class="navbar-cart-total"><span class="text-uppercase text-muted">Total</span><strong class="text-uppercase">$75.00</strong></div>
                     <!-- buttons-->
-                    <div class="d-flex justify-content-between"><a href="{% url 'cart' %}" class="btn btn-link text-dark mr-3">View Cart <i class="fa-arrow-right fa"></i></a><a href="checkout1.html" class="btn btn-outline-dark">Checkout</a></div>
+                    <div class="d-flex justify-content-between"><a href="{% url 'cart' %}" class="btn btn-link text-dark mr-3">View Cart <i class="fa-arrow-right fa"></i></a><a href="{% url 'checkout' %}" class="btn btn-outline-dark">Checkout</a></div>
                   </div>
                 </div>
               </div>
@@ -554,7 +554,7 @@
     <!-- Object Fit Images - Fallback for browsers that don't support object-fit-->
     <script src="{% static 'vendor/object-fit-images/ofi.min.js' %}"></script>
     <script>
-      var basePath = '{% get_static_prefix %}'
+      var basePath = '{% static "" %}'
       
     </script>
     <script src="{% static 'js/theme.1cfe87dd.js' %}"></script>

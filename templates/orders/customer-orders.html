@@ -69,7 +69,7 @@
           <!-- Customer Sidebar-->
           <div class="col-xl-3 col-lg-4 mb-5">
             <div class="customer-sidebar card border-0"> 
-              <div class="customer-profile"><a href="#" class="d-inline-block"><img src="http://www.viwaproduction.com/wp-content/uploads/2016/07/13724981_1396035947079942_2288725553838429934_o-682x1024.jpg" class="img-fluid rounded-circle customer-image" style='width: 300px; height: 163px'></a>
+              <div class="customer-profile"><a href="#" class="d-inline-block"><img src="{{ user.socialaccount_set.all.0.get_avatar_url }}" class="img-fluid rounded-circle customer-image" ></a>
                 <h5>Julie Svestkova</h5>
                 <p class="text-muted text-sm mb-0">Ostrava, Czech republic</p>
               </div>
@@ -101,7 +101,7 @@
                         <circle stroke-miterlimit="10" stroke="#202020" fill="none" r="4" cy="16" cx="32" data-name="layer1" stroke-linejoin="round" stroke-linecap="round" style="stroke:var(--layer1, #202020)"></circle>
                       </svg>
                     </svg>Addresses</span></a>
-                    <a href="customer-login.html" class="list-group-item d-flex justify-content-between align-items-center">
+                    <a href="{% url 'account_logout' %}" class="list-group-item d-flex justify-content-between align-items-center">
                       <span>
                       <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" id="exit-1" width="100%" height="100%" class="svg-icon svg-icon-heavy mr-2">
                         <title>Exit</title>

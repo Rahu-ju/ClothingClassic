@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load i18n %}
 {% load account socialaccount %}
 {% block content %}
  <!-- Hero Section-->
@@ -25,27 +26,17 @@
                 <h6 class="text-uppercase mb-0">{% trans "Sign Out" %}</h6>
               </div>
               <div class="block-body"> 
-                <p class="lead">Not our registered customer yet?</p>
+                <p class="lead">Happy shopping !!</p>
                 <p class="text-muted">With registration with us new world of fashion, fantastic discounts and much more opens to you! The whole process will not take you more than a minute!</p>
                 <p class="text-muted">If you have any questions, please feel free to <a href="contact.html">contact us</a>, our customer service center is working for you 24/7.</p>
-                <hr>
-                <form action="https://demo.bootstrapious.com/sell/1-2-5/customer-orders.html" method="get">
-                  <div class="form-group">
-                    <label for="name" class="form-label">Name</label>
-                    <input id="name" type="text" class="form-control">
-                  </div>
-                  <div class="form-group">
-                    <label for="email" class="form-label">Email</label>
-                    <input id="email" type="text" class="form-control">
-                  </div>
-                  <div class="form-group">
-                    <label for="password" class="form-label">Password</label>
-                    <input id="password" type="password" class="form-control">
-                  </div>
-                  <div class="form-group text-center">
-                    <button type="submit" class="btn btn-outline-dark"><i class="far fa-user mr-2"></i>Register                                </button>
-                  </div>
+                <form method="post" action="{% url 'account_logout' %}">
+                  {% csrf_token %}
+                  {% if redirect_field_value %}
+                  <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}"/>
+                  {% endif %}
+                  <button type="submit" class="btn btn-outline-dark"><i class="fa fa-sign-out-alt mr-2"></i>>{% trans 'Sign Out' %}</button>
                 </form>
+                <hr>
               </div>
             </div>
           </div>
