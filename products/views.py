@@ -3,11 +3,14 @@ from django.http import Http404
 
 from .models import Product
 
+from marketing.models import Slider
+
 # Create your views here.
 
 def home(request):
+    sliders = Slider.objects.all()
     template = 'home.html'
-    context = {}
+    context = {"sliders": sliders,}
     return render(request, template, context)
 
 
