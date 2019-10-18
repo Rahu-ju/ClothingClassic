@@ -9,6 +9,7 @@ from marketing.models import Slider
 
 def home(request):
     sliders = Slider.objects.all()
+    print(sliders)
     template = 'home.html'
     context = {"sliders": sliders,}
     return render(request, template, context)
