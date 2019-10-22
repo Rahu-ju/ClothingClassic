@@ -56,6 +56,7 @@ INSTALLED_APPS = [
     'products.apps.ProductsConfig',
     'carts.apps.CartsConfig',
     'orders.apps.OrdersConfig',
+    'directOrders.apps.DirectordersConfig',
     'accounts.apps.AccountsConfig',
     'marketing.apps.MarketingConfig',
 
