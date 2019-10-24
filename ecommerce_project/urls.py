@@ -36,6 +36,9 @@ urlpatterns = [
 
     # orders app urls
     path('order/', include('orders.urls')),
+
+    # directOrders app urls
+    path('direct_order/', include('directOrders.urls')),
 ]
 
 # Load static files in local development

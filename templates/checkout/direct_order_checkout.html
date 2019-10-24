@@ -1,0 +1,89 @@
+{% extends 'base.html' %}
+{% block title %} Direct checkout{% endblock title %}
+{% block content %}
+    <!-- Hero Section-->
+    <section class="hero">
+      <div class="container">
+        <!-- Breadcrumbs -->
+        <ol class="breadcrumb justify-content-center">
+          <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+          <li class="breadcrumb-item active">Checkout        </li>
+        </ol>
+        <!-- Hero Content-->
+        <div class="hero-content pb-5 text-center">
+          <h1 class="hero-heading">Checkout</h1>
+          <div class="row">   
+            <div class="col-xl-8 offset-xl-2"><p class="lead text-muted">Please fill in your address.</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Checkout-->
+    <section>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8">
+            <ul class="custom-nav nav nav-pills mb-5">
+              <li class="nav-item w-25"><a href="#" class="nav-link text-sm nav-address active">Address</a></li>
+              <li class="nav-item w-25"><a href="#" class="nav-link text-sm nav-delivery disabled">Delivery Method</a></li>
+              <li class="nav-item w-25"><a href="#" class="nav-link text-sm nav-review disabled">Order Review </a></li>
+              <li class="nav-item w-25"><a href="#" class="nav-link text-sm nav-payment disabled">Payment Method</a></li>
+            </ul>
+            <form action="#">
+                {% include 'checkout/checkout_snipets/address.html' %}
+                {% include 'checkout/checkout_snipets/delivery_method.html' %}
+                {% include 'checkout/checkout_snipets/order_review.html' %}
+                
+
+            </form>
+          </div>
+          <div class="col-lg-4">
+            <div class="block mb-5">
+              <div class="block-header">
+                <h6 class="text-uppercase mb-0">Order Summary</h6>
+              </div>
+              <div class="block-body bg-light pt-1">
+                <p class="text-sm">Shipping and additional costs are calculated based on values you have entered.</p>
+                <ul class="order-summary mb-0 list-unstyled">
+                  <li class="order-summary-item"><span>Order Subtotal </span><span>$390.00</span></li>
+                  <li class="order-summary-item"><span>Shipping and handling</span><span>$10.00</span></li>
+                  <li class="order-summary-item"><span>Tax</span><span>$0.00</span></li>
+                  <li class="order-summary-item border-0"><span>Total</span><strong class="order-summary-total">$400.00</strong></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+{% endblock content %}
+{% block jquery %}
+<script>
+$("[href='#delivery-method']").click(function(){
+    // hide the address section as the payment section shows
+    $("#address-section").removeClass("show");
+
+    //remove the active class from the navbar address button
+    // and also remove the disable class from the delivery method button
+    $(".nav-address").removeClass("active");
+    $(".nav-delivery").removeClass("disabled");
+    $(".nav-delivery").addClass("active");
+
+
+});
+
+$("[href='#order-review-section']").click(function(){
+    // hide the address section as the payment section shows
+    $("#delivery-method").removeClass("show");
+
+    //remove the active class from the navbar address button
+    // and also remove the disable class from the delivery method button
+    $(".nav-delivery").removeClass("active");
+    $(".nav-review").removeClass("disabled");
+    $(".nav-review").addClass("active");
+
+
+});
+</script>
+
+{% endblock jquery %}
