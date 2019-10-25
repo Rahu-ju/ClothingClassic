@@ -33,7 +33,7 @@
                 {% include 'checkout/checkout_snipets/address.html' %}
                 {% include 'checkout/checkout_snipets/delivery_method.html' %}
                 {% include 'checkout/checkout_snipets/order_review.html' %}
-                
+                {% include 'checkout/checkout_snipets/payment_method.html' %}
 
             </form>
           </div>
@@ -72,6 +72,7 @@ $("[href='#delivery-method']").click(function(){
 
 });
 
+// take some nav actions after click the buton
 $("[href='#order-review-section']").click(function(){
     // hide the address section as the payment section shows
     $("#delivery-method").removeClass("show");
@@ -81,6 +82,19 @@ $("[href='#order-review-section']").click(function(){
     $(".nav-delivery").removeClass("active");
     $(".nav-review").removeClass("disabled");
     $(".nav-review").addClass("active");
+
+
+});
+
+$("[href='#payment-method']").click(function(){
+    // hide the address section as the payment section shows
+    $("#order-review-section").removeClass("show");
+
+    //remove the active class from the navbar address button
+    // and also remove the disable class from the delivery method button
+    $(".nav-review").removeClass("active");
+    $(".nav-payment").removeClass("disabled");
+    $(".nav-payment").addClass("active");
 
 
 });
