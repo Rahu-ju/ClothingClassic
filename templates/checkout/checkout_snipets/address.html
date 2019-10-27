@@ -7,14 +7,19 @@
                 <div class="block-body">
                   <div class="row">
                     <div class="form-group col-md-6">
-                      <label for="fullname_invoice" class="form-label">Full Name</label>
-                      <input type="text" name="fullname_invoice" placeholder="Joe Black" id="fullname_invoice" class="form-control">
+                      <label for="{{ form.name.id_for_label }}" class="form-label">Full Name</label>
+                      {{ form.name.errors }}
+                      {{ form.name }}
+                      {% comment %} <input type="text" name="fullname_invoice" placeholder="Joe Black" id="fullname_invoice" class="form-control"> {% endcomment %}
                     </div>
                     <div class="form-group col-md-6">
-                      <label for="emailaddress_invoice" class="form-label">Email Address</label>
-                      <input type="text" name="emailaddress_invoice" placeholder="joe.black@gmail.com" id="emailaddress_invoice" class="form-control">
+                      <label for="{{ form.email.id_for_label }}" class="form-label">Email Address</label>
+                      {% comment %} <input type="text" name="emailaddress_invoice" placeholder="joe.black@gmail.com" id="emailaddress_invoice" class="form-control"> {% endcomment %}
+                      {{ form.email.errors }}
+                      {{ form.email }}
                     </div>
-                    <div class="form-group col-md-6">
+
+                    {% comment %} <div class="form-group col-md-6">
                       <label for="street_invoice" class="form-label">Street</label>
                       <input type="text" name="street_invoice" placeholder="123 Main St." id="street_invoice" class="form-control">
                     </div>
@@ -29,11 +34,29 @@
                     <div class="form-group col-md-6">
                       <label for="state_invoice" class="form-label">State</label>
                       <input type="text" name="state_invoice" placeholder="State" id="state_invoice" class="form-control">
-                    </div>
+                    </div> {% endcomment %}
+
+                    
+
                     <div class="form-group col-md-6">
-                      <label for="phonenumber_invoice" class="form-label">Phone Number</label>
-                      <input type="text" name="phonenumber_invoice" placeholder="Phone Number" id="phonenumber_invoice" class="form-control">
+                      <label for="{{ form.address.id_for_label }}" class="form-label">Your address</label>
+                      {{ form.address.errors }}
+                      {{ form.address }}
                     </div>
+
+                    <div class="form-group col-md-6">
+                      <label for="{{ form.say.id_for_label }}" class="form-label">Your suggestions</label>
+                      {{ form.say.errors }}
+                      {{ form.say }}
+                    </div>
+
+                    <div class="form-group col-md-6">
+                      <label for="{{ form.phone.id_for_label }}" class="form-label">Phone Number</label>
+                      {% comment %} <input type="text" name="phonenumber_invoice" placeholder="Phone Number" id="phonenumber_invoice" class="form-control"> {% endcomment %}
+                      {{ form.phone.errors }}
+                      {{ form.phone }}
+                    </div>
+
                     <div class="form-group col-12 mt-3">
                       <div class="custom-control custom-checkbox">
                         <input id="show-shipping-address" type="checkbox" name="clothes-brand" class="custom-control-input">

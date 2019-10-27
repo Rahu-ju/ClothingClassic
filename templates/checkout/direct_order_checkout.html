@@ -29,7 +29,7 @@
               <li class="nav-item w-25"><a href="#" class="nav-link text-sm nav-review disabled">Order Review </a></li>
               <li class="nav-item w-25"><a href="#" class="nav-link text-sm nav-payment disabled">Payment Method</a></li>
             </ul>
-            <form action="#">
+            <form action="" method="post">{% csrf_token %}
                 {% include 'checkout/checkout_snipets/address.html' %}
                 {% include 'checkout/checkout_snipets/delivery_method.html' %}
                 {% include 'checkout/checkout_snipets/order_review.html' %}
