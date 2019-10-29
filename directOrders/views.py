@@ -9,8 +9,7 @@ def direct_checkout(request):
     if request.method == "POST":
         pass
     else:
-        form = DirectOrderForm
-
+        form = DirectOrderForm()
 
     template = 'checkout/direct_order_checkout.html'
     context = {"form": form}
