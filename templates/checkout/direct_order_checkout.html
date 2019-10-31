@@ -7,14 +7,14 @@
         <!-- Breadcrumbs -->
         <ol class="breadcrumb justify-content-center">
           <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-          <li class="breadcrumb-item active">Checkout        </li>
+          <li class="breadcrumb-item active">Checkout</li>
         </ol>
         <!-- Hero Content-->
-        <div class="hero-content pb-5 text-center">
-          <h1 class="hero-heading">Checkout</h1>
-          <div class="row">   
+        <div class="hero-content text-center">
+          <h3 class="hero-heading">Order placement</h3>
+          {% comment %} <div class="row">   
             <div class="col-xl-8 offset-xl-2"><p class="lead text-muted">Please fill in your address.</p></div>
-          </div>
+          </div> {% endcomment %}
         </div>
       </div>
     </section>
@@ -23,12 +23,12 @@
       <div class="container">
         <div class="row">
           <div class="col-lg-8">
-            <ul class="custom-nav nav nav-pills mb-5">
+            {% comment %} <ul class="custom-nav nav nav-pills mb-5">
               <li class="nav-item w-25"><a href="#" class="nav-link text-sm nav-address active">Address</a></li>
               <li class="nav-item w-25"><a href="#" class="nav-link text-sm nav-delivery disabled">Delivery Method</a></li>
               <li class="nav-item w-25"><a href="#" class="nav-link text-sm nav-review disabled">Order Review </a></li>
               <li class="nav-item w-25"><a href="#" class="nav-link text-sm nav-payment disabled">Payment Method</a></li>
-            </ul>
+            </ul> {% endcomment %}
             <form action="" method="post">{% csrf_token %}
                 {% include 'checkout/checkout_snipets/address.html' %}
                 {% include 'checkout/checkout_snipets/delivery_method.html' %}
@@ -59,45 +59,26 @@
 {% endblock content %}
 {% block jquery %}
 <script>
-$("[href='#delivery-method']").click(function(){
-    // hide the address section as the payment section shows
-    $("#address-section").removeClass("show");
+//scroll to top part of the section 
+$('#choose-delivery-method').on('click', function (e) {
+  $('html,body').animate({
+      scrollTop: $('#delivery-method').offset().top -80
+  }, 500); 
+}); 
 
-    //remove the active class from the navbar address button
-    // and also remove the disable class from the delivery method button
-    $(".nav-address").removeClass("active");
-    $(".nav-delivery").removeClass("disabled");
-    $(".nav-delivery").addClass("active");
-
-
+$('#review-the-order').on('click', function (e) {
+  $('html,body').animate({
+      scrollTop: $('#order-review-section').offset().top -80
+  }, 500); 
 });
 
-// take some nav actions after click the buton
-$("[href='#order-review-section']").click(function(){
-    // hide the address section as the payment section shows
-    $("#delivery-method").removeClass("show");
-
-    //remove the active class from the navbar address button
-    // and also remove the disable class from the delivery method button
-    $(".nav-delivery").removeClass("active");
-    $(".nav-review").removeClass("disabled");
-    $(".nav-review").addClass("active");
-
-
+$('#choose-payment-options').on('click', function (e) {
+  $('html,body').animate({
+      scrollTop: $('#payment-method').offset().top -80
+  }, 500); 
 });
 
-$("[href='#payment-method']").click(function(){
-    // hide the address section as the payment section shows
-    $("#order-review-section").removeClass("show");
 
-    //remove the active class from the navbar address button
-    // and also remove the disable class from the delivery method button
-    $(".nav-review").removeClass("active");
-    $(".nav-payment").removeClass("disabled");
-    $(".nav-payment").addClass("active");
-
-
-});
 </script>
 
 {% endblock jquery %}

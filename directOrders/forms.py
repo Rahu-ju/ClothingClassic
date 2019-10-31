@@ -14,9 +14,11 @@ class DirectOrderForm(ModelForm):
             "phone": NumberInput(attrs={"placeholder": "Your phone number",
                                     "class": "form-control",}),
             "address": Textarea(attrs={"placeholder": "we will send your order to this address.",
-                                    "class": "form-control",}),
+                                    "class": "form-control",
+                                    "rows":"3",}),
             "say": Textarea(attrs={"placeholder": "we will happy to take your suggestions.",
-                                    "class": "form-control",}),
+                                    "class": "form-control",
+                                    "rows":"3",}),
 
         }
 
