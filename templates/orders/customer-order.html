@@ -118,8 +118,8 @@
           <!-- Customer Sidebar-->
           <div class="col-xl-3 col-lg-4 mb-5">
             <div class="customer-sidebar card border-0"> 
-              <div class="customer-profile"><a href="#" class="d-inline-block"><img src="http://www.viwaproduction.com/wp-content/uploads/2016/07/13724981_1396035947079942_2288725553838429934_o-682x1024.jpg" class="img-fluid rounded-circle customer-image" style='width: 300px; height: 163px'></a>
-                <h5>Julie Svestkova</h5>
+              <div class="customer-profile"><a href="#" class="d-inline-block"><img src="{{ user.socialaccount_set.all.0.get_avatar_url }}" class="img-fluid rounded-circle customer-image" style='width: 300px; height: 163px'></a>
+                <h5>{{ request.user.get_full_name }}</h5>
                 <p class="text-muted text-sm mb-0">Ostrava, Czech republic</p>
               </div>
               <nav class="list-group customer-nav">

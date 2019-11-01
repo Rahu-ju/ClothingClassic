@@ -31,3 +31,8 @@
 .iconFacebook{
     stroke: none !important;
 }
+
+/* input field amount in the address section */
+input.amount{
+    width: 50%;
+}

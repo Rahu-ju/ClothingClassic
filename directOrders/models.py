@@ -13,6 +13,7 @@ class DirectOrder(models.Model):
     name = models.CharField(max_length=50)
     email = models.EmailField(max_length=254, null=True, blank=True)
     phone = models.IntegerField()
+    amount = models.IntegerField(default=0)
     address = models.TextField(max_length=150)
     say = models.TextField(max_length=150, null=True, blank=True)
     status = models.CharField(max_length=50, choices=STATUS_CHOICES, default='Started')

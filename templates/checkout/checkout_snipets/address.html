@@ -1,8 +1,8 @@
 <!-- Invoice Address-->
-        <span class="collapse show" id="address-section">
+        <span class="" id="address-section">
             <div class="block bg-light">
                 <div class="block-header">
-                  <h6 class="text-uppercase mb-0">Invoice address                    </h6>
+                  <h6 class="text-uppercase mb-0">Your address</h6>
                 </div>
                 <div class="block-body">
                   <div class="row">
@@ -12,12 +12,47 @@
                       {{ form.name }}
                       {% comment %} <input type="text" name="fullname_invoice" placeholder="Joe Black" id="fullname_invoice" class="form-control"> {% endcomment %}
                     </div>
+
+                    <div class="form-group col-md-6">
+                      <label for="{{ form.phone.id_for_label }}" class="form-label">Phone Number</label>
+                      {% comment %} <input type="text" name="phonenumber_invoice" placeholder="Phone Number" id="phonenumber_invoice" class="form-control"> {% endcomment %}
+                      {{ form.phone.errors }}
+                      {{ form.phone }}
+                    </div>
+
+                    <div class="form-group col-md-6">
+                      <label for="{{ form.amount.id_for_label }}" class="form-label">Amount</label>
+                      {% comment %} <input type="text" name="phonenumber_invoice" placeholder="Phone Number" id="phonenumber_invoice" class="form-control"> {% endcomment %}
+                      {{ form.amount.errors }}
+                      
+                      <div class="input-group">
+                        {{ form.amount }}
+                        <div class="input-group-append">
+                          <span class="input-group-text">Kg</span>
+                        </div>
+                      </div>
+                    </div>
+
                     <div class="form-group col-md-6">
                       <label for="{{ form.email.id_for_label }}" class="form-label">Email Address</label>
                       {% comment %} <input type="text" name="emailaddress_invoice" placeholder="joe.black@gmail.com" id="emailaddress_invoice" class="form-control"> {% endcomment %}
                       {{ form.email.errors }}
                       {{ form.email }}
                     </div>
+
+                    <div class="form-group col-md-6">
+                      <label for="{{ form.address.id_for_label }}" class="form-label">Courier address</label>
+                      {{ form.address.errors }}
+                      {{ form.address }}
+                    </div>
+
+                    <div class="form-group col-md-6">
+                      <label for="{{ form.say.id_for_label }}" class="form-label">Your comments</label>
+                      {{ form.say.errors }}
+                      {{ form.say }}
+                    </div>
+
+                    
 
                     {% comment %} <div class="form-group col-md-6">
                       <label for="street_invoice" class="form-label">Street</label>
@@ -36,33 +71,14 @@
                       <input type="text" name="state_invoice" placeholder="State" id="state_invoice" class="form-control">
                     </div> {% endcomment %}
 
-                    
-
-                    <div class="form-group col-md-6">
-                      <label for="{{ form.address.id_for_label }}" class="form-label">Your address</label>
-                      {{ form.address.errors }}
-                      {{ form.address }}
-                    </div>
-
-                    <div class="form-group col-md-6">
-                      <label for="{{ form.say.id_for_label }}" class="form-label">Your suggestions</label>
-                      {{ form.say.errors }}
-                      {{ form.say }}
-                    </div>
-
-                    <div class="form-group col-md-6">
-                      <label for="{{ form.phone.id_for_label }}" class="form-label">Phone Number</label>
-                      {% comment %} <input type="text" name="phonenumber_invoice" placeholder="Phone Number" id="phonenumber_invoice" class="form-control"> {% endcomment %}
-                      {{ form.phone.errors }}
-                      {{ form.phone }}
-                    </div>
-
-                    <div class="form-group col-12 mt-3">
+                
+                    {% comment %} <div class="form-group col-12 mt-3">
                       <div class="custom-control custom-checkbox">
                         <input id="show-shipping-address" type="checkbox" name="clothes-brand" class="custom-control-input">
                         <label for="show-shipping-address" data-toggle="collapse" data-target="#shippingAddress" aria-expanded="false" aria-controls="shippingAddress" class="custom-control-label align-middle">Use a different shipping address</label>
                       </div>
                     </div>
+                     {% endcomment %}
                   </div>
                   <!-- /Invoice Address-->
                 </div>
@@ -100,5 +116,5 @@
                   <!-- /Shipping Address-->
                 </div>
             </div>
-            <div class="mb-5 d-flex justify-content-between flex-column flex-lg-row"><a href="cart.html" class="btn btn-link text-muted"></a><a href="#delivery-method" class="btn btn-dark" id="choose-delivery-method">Choose delivery method<i class="fa fa-angle-right ml-2"></i></a></div>
+            <div class="mb-5 d-flex justify-content-between flex-column flex-lg-row"><a href="cart.html" class="btn btn-link text-muted"></a><a href="#delivery-method" class="btn btn-dark" id="review-your-order">Review your order<i class="fa fa-angle-right ml-2"></i></a></div>
         </span>
