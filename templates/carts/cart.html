@@ -48,8 +48,12 @@
                   <div class="cart-item" id='item-{{ item.id }}'>
                     <div class="row d-flex align-items-center text-center">
                       <div class="col-5">
-                        <div class="d-flex align-items-center"><a href="{% url 'detail' item.product.slug %}"><img src="{{item.product.get_image_url }}" alt="..." class="cart-item-img"></a>
-                          <div class="cart-title text-left"><a href="{% url 'detail' item.product.slug %}" class="text-uppercase text-dark"><strong>{{ item.product.title }}</strong></a><br><span class="text-muted text-sm">Size: {{ item.size }}</span><br><span class="text-muted text-sm">Colour: {{ item.color }}</span>
+                        <div class="d-flex align-items-center">
+                          <a href="{% url 'detail' item.product.slug %}">
+                            <img src="{{item.product.get_image_url }}" alt="..." class="cart-item-img">
+                          </a>
+                          <div class="cart-title text-left">
+                            <a href="{% url 'detail' item.product.slug %}" class="text-uppercase text-dark"><strong>{{ item.product.title }}</strong></a><br><span class="text-muted text-sm">Size: {{ item.size }}</span><br><span class="text-muted text-sm">Colour: {{ item.color }}</span>
                           </div>
                         </div>
                       </div>

@@ -3,15 +3,15 @@ from django.http import HttpResponseRedirect
 from django.urls import reverse
 
 from .models import Order
-from .view_helper_functions import order_id_generator
+from .utils import order_id_generator
 from carts.models import Cart
 
 # Create your views here.
 def checkout(request):
     '''Retrieve the cart from session, create order, run credit card,
-    delete cart from the session.'''
+    delete cart from the session and from the database.'''
 
-    #Checking the cart
+    #retrieve the cart
     try:
         the_id = request.session['cart_id']
         cart = Cart.objects.get(id=the_id)
@@ -32,6 +32,9 @@ def checkout(request):
         # error message
         return HttpResponseRedirect(reverse('cart'))
 
+    # retrieve the product items  from the cart
+    product_items = cart.cartitem_set.all
+
     # assign address
     # run credit card
     # del cart from the session when order is finfished by admin.
@@ -40,8 +43,9 @@ def checkout(request):
         del request.session['items_total']
         return HttpResponseRedirect(reverse('cart'))
 
-    context = {}
-    template = 'checkout/checkout1.html'
+    context = {"product_items": product_items}
+    
+    template = 'checkout/direct_order_checkout.html'
     return render(request,template, context)
 
     

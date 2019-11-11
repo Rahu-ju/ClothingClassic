@@ -9,9 +9,24 @@ from marketing.models import Slider
 
 def home(request):
     sliders = Slider.objects.all()
-    print(sliders)
+    try:
+        cloths = Product.objects.filter(category='cloth')
+        feature_cloth = cloths[0]
+    except:
+        feature_cloth = None
+
+    # retrive liquid category product which has show_in_home_page property
+    try:
+        liquids = Product.objects.filter(category='liquid').filter(show_in_homepage=True)
+        feature_liquid = liquids[0]
+        print(liquids)
+    except:
+        feature_liquid = None
+    
     template = 'home.html'
-    context = {"sliders": sliders,}
+    context = {"sliders": sliders, 
+                "feature_cloth": feature_cloth,
+                "feature_liquid": feature_liquid}
     return render(request, template, context)
 
 

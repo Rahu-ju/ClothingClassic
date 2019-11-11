@@ -67,14 +67,14 @@
 
               <div class="col-md-6">
                 <div class="bg-white p-5"><strong class="text-uppercase text-muted d-inline-block mb-2 text-sm">Featured</strong>
-                  <h2 class="mb-3">Honey from, jessore &amp; Sundarban</h2>
-                  <p class="text-muted">As am hastily invited settled at limited civilly fortune me. Really spring in extent an by. Judge but built party world. Of so am he remember although required. Bachelor unpacked be advanced at. Confined in declared marianne is vicinity</p>
-                  <a href="post.html" class="btn btn-outline-dark">Learn more<i class="fa fa-long-arrow-alt-right"></i></a>
+                  <h2 class="mb-3">{{ feature_liquid.title }}</h2>
+                  <p class="text-muted">{{ feature_liquid.description }}</p>
+                  <a href="{{ feature_liquid.get_absolute_url }}" class="btn btn-outline-dark">Shop now<i class="fa fa-long-arrow-alt-right"></i></a>
                 </div>
               </div>
 
               <div class="col-md-6">
-                <img src="https://lh3.googleusercontent.com/zyN2rtOAcfJX_jfNGFo21trSZ8dD8ucE3kVoBnMHLSFwcS7EDN_b8bXuA0iNOqqmdD1QuCLFebosOHHQkUN1Wm4=rw-w1310" class="img-fluid" alt="">
+                <img src="{{ feature_liquid.get_image_url }}" class="img-fluid" alt="">
                 {% comment %} <img src="https://www.beesponsible.com/wp-content/uploads/2018/02/12oz-HungarianRawAcacia.png" class="img-fluid" alt=""> {% endcomment %}
               </div>
 
@@ -86,7 +86,8 @@
           <div class="container">
             <div class="bg-white p-5"><strong class="text-uppercase text-muted d-inline-block mb-2 text-sm">Featured</strong>
               <h2 class="mb-3">Fashion, purpose &amp; freedom</h2>
-              <p class="text-muted">As am hastily invited settled at limited civilly fortune me. Really spring in extent an by. Judge but built party world. Of so am he remember although required. Bachelor unpacked be advanced at. Confined in declared marianne is vicinity</p><a href="post.html" class="btn btn-link text-dark p-0">Continue reading <i class="fa fa-long-arrow-alt-right"></i></a>
+              <p class="text-muted">As am hastily invited settled at limited civilly fortune me. Really spring in extent an by. Judge but built party world. Of so am he remember although required. Bachelor unpacked be advanced at. Confined in declared marianne is vicinity</p>
+              <a href="post.html" class="btn btn-link text-dark p-0">Shop now<i class="fa fa-long-arrow-alt-right"></i></a>
             </div>
           </div>
         </div>

@@ -337,15 +337,18 @@
               {% if user.is_authenticated %}
                 <div class="nav-item">
                   <a href="{% url 'orders' %}" class="navbar-icon-link">
-                  <img src="{{ user.socialaccount_set.all.0.get_avatar_url }}" class="img-fluid " alt="Responsive image" style="width:30px; height:30px; border-radius: 50%;">
+                  {% if user.socialaccount_set.all.0.get_avatar_url %}
+                    <img src="{{ user.socialaccount_set.all.0.get_avatar_url }}" class="img-fluid " alt="Responsive image" style="width:30px; height:30px; border-radius: 50%;">
+                  {% else %}
                     {% comment %} user icon {% endcomment %}
-                    {% comment %} <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" id="male-user-1" width="25px" height="25px" class='svg-icon'>
+                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" id="male-user-1" width="25px" height="25px" class='svg-icon'>
                       <title>Male User</title>
                       <desc>A line styled icon from Orion Icon Library.</desc>
                       <path data-name="layer2" d="M50.9 55.3a12.2 12.2 0 0 0-4.3-1.7c-8.1-1.5-8.1-4.1-8.1-5.7v-1a14.8 14.8 0 0 0 4.2-7.1c2.5 0 3-5.1 3-5.9s.1-3.8-2.4-3.8c5.4-14.6-8.9-20.5-19.6-13-4.4 0-4.8 6.5-3.1 13-2.5 0-2.4 3.1-2.4 3.8s.6 5.9 3 5.9a14.8 14.8 0 0 0 4.3 7.2v1c0 1.6 0 4.2-8.1 5.7a11.9 11.9 0 0 0-4.3 1.6" fill="none" stroke="#202020" stroke-miterlimit="10" stroke-linejoin="round" stroke-linecap="round" style="stroke:var(--layer1, #202020)"></path>
                       <circle data-name="layer1" cx="32" cy="32" r="30" fill="none" stroke="#202020" stroke-miterlimit="10" stroke-linejoin="round" stroke-linecap="round" style="stroke:var(--layer1, #202020)"></circle>
                     </svg>
-                    <span class="text-sm ml-2 ml-lg-0 text-uppercase text-sm font-weight-bold d-none d-sm-inline d-lg-none">Log in</span> {% endcomment %}
+                    <span class="text-sm ml-2 ml-lg-0 text-uppercase text-sm font-weight-bold d-none d-sm-inline d-lg-none">Log in</span>
+                  {% endif %}
                   </a>
                 </div>
               {% else %}

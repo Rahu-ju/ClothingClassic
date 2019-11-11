@@ -60,7 +60,7 @@ def remove_from_cart(request, pk):
 
 
 def update_cart_item(request):
-    '''Update cart Item quantity and also variations(still not applied)'''
+    '''Update cart Item quantity and also variations(still not applied) from the cart.'''
 
     
     pk = request.GET.get('pk')
