@@ -3,6 +3,7 @@ from django.http import HttpResponseRedirect
 from django.urls import reverse
 
 from .models import Order
+from .forms import OrderAddressForm
 from .utils import order_id_generator
 from carts.models import Cart
 
@@ -19,31 +20,38 @@ def checkout(request):
         the_id = None
         return HttpResponseRedirect(reverse('cart'))
 
-    # Create the order
-    try:
-        new_order = Order.objects.get(cart=cart)
-    except Order.DoesNotExist:
-        new_order = Order()
-        new_order.cart = cart
-        new_order.user = request.user
-        new_order.order_id = order_id_generator()
-        new_order.save()
-    except:
-        # error message
-        return HttpResponseRedirect(reverse('cart'))
-
     # retrieve the product items  from the cart
     product_items = cart.cartitem_set.all
+        
 
-    # assign address
-    # run credit card
-    # del cart from the session when order is finfished by admin.
-    if new_order.status == 'Finished':
-        del request.session['cart_id']
-        del request.session['items_total']
-        return HttpResponseRedirect(reverse('cart'))
+    if request.method == "POST":
+        # Create the order
+        try:
+            new_order = Order.objects.get(cart=cart)
+        except Order.DoesNotExist:
+            new_order = Order()
+            new_order.cart = cart
+            new_order.user = request.user
+            new_order.order_id = order_id_generator()
+            new_order.save()
+        except:
+            # error message
+            return HttpResponseRedirect(reverse('cart'))
 
-    context = {"product_items": product_items}
+        
+
+        # assign address
+        # run credit card
+        # del cart from the session when order is finfished by admin.
+        if new_order.status == 'Finished':
+            del request.session['cart_id']
+            del request.session['items_total']
+            return HttpResponseRedirect(reverse('cart'))
+    else:
+        form = OrderAddressForm()
+    
+    context = {"form": form, 
+               "product_items": product_items, }
     
     template = 'checkout/direct_order_checkout.html'
     return render(request,template, context)
