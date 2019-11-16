@@ -36,7 +36,7 @@
     <link rel="stylesheet" href="{% static 'fontawesome/fontawesome.css' %}">
   </head>
   <body>
-    <header class="header header-absolute">
+    {% comment %} <header class="header header-absolute">
       <!-- Navbar-->
       <nav class="navbar">
         <div class="container-fluid">  
@@ -49,7 +49,17 @@
         </div>
       </nav>
       <!-- /Navbar -->
-    </header>
+    </header> {% endcomment %}
+
+    <div class="container-fluid">
+      <div class="row">
+      <div class="col">
+        <a href="{% url 'home' %}" class="navbar-brand p-3">
+         <h3 class='font-weight-bold text-serif'>why</h3>
+        </a>
+      </div>
+      </div>
+    </div>
 
     <!-- Main content section-->
     {% block content %}

@@ -1,49 +1,28 @@
-{% extends 'base.html' %}
+{% extends 'custom_base.html' %}
 {% block title %} Direct checkout{% endblock title %}
 {% block content %}
-    <!-- Hero Section-->
-    <section class="hero">
-      <div class="container">
-        <!-- Breadcrumbs -->
-        <ol class="breadcrumb justify-content-center">
-          <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-          <li class="breadcrumb-item active">Checkout</li>
-        </ol>
-        <!-- Hero Content-->
-        <div class="hero-content text-center">
-          <h3 class="hero-heading">Order placement</h3>
-          {% comment %} <div class="row">   
-            <div class="col-xl-8 offset-xl-2"><p class="lead text-muted">Please fill in your address.</p></div>
-          </div> {% endcomment %}
-        </div>
-      </div>
-    </section>
+
     <!-- Checkout-->
     <section>
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-8">
-            {% comment %} <ul class="custom-nav nav nav-pills mb-5">
-              <li class="nav-item w-25"><a href="#" class="nav-link text-sm nav-address active">Address</a></li>
-              <li class="nav-item w-25"><a href="#" class="nav-link text-sm nav-delivery disabled">Delivery Method</a></li>
-              <li class="nav-item w-25"><a href="#" class="nav-link text-sm nav-review disabled">Order Review </a></li>
-              <li class="nav-item w-25"><a href="#" class="nav-link text-sm nav-payment disabled">Payment Method</a></li>
-            </ul> {% endcomment %}
+      <div class="container-fluid px-5">
+        <div class="row jumbotron ">
+          <div class="col-md-1"></div>
+          <div class="col-lg-6">
             <form action="" method="post">{% csrf_token %}
                 {% include 'checkout/checkout_snipets/address.html' %}
                 {% comment %} {% include 'checkout/checkout_snipets/delivery_method.html' %} {% endcomment %}
                 {% include 'checkout/checkout_snipets/order_review.html' %}
                 {% include 'checkout/checkout_snipets/payment_method.html' %}
-
             </form>
           </div>
+          
           <div class="col-lg-4">
 
-            <div class="block mb-5">
+            <div class="block mb-5 bg-white shadow">
               <div class="block-header">
                 <h6 class="text-uppercase mb-0">Order Summary</h6>
               </div>
-              <div class="block-body bg-light pt-1">
+              <div class="block-body pt-1">
                 <p class="text-sm">Shipping and additional costs are calculated based on values you have entered.</p>
                 <ul class="order-summary mb-0 list-unstyled">
                   <li class="order-summary-item"><span>Order Subtotal </span><span>$390.00</span></li>
@@ -54,11 +33,11 @@
               </div>
             </div>
             {% comment %} delivery information section {% endcomment %}
-            <div class="block mb-5">
+            <div class="block mb-5 shadow">
               <div class="block-header">
                 <h6 class="text-uppercase mb-0">Delivey Method</h6>
               </div>
-              <div class="block-body bg-light pt-1">
+              <div class="block-body bg-light pt-1 bg-white">
                 <p class="text-md">You will get the product at your address.</p>
                 {% comment %} <ul class="order-summary mb-0 list-unstyled">
                   <li class="order-summary-item"><span>Order Subtotal </span><span>$390.00</span></li>
@@ -70,6 +49,7 @@
             </div>
 
           </div>
+          <div class="col-md-1"></div>
         </div>
       </div>
     </section>

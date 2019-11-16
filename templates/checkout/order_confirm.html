@@ -2,21 +2,12 @@
 {% block title %} order confirmed {% endblock title %}
 {% block content %}
  <!-- Hero Section-->
-    <section class="hero">
-      <div class="container">
-        <!-- Breadcrumbs -->
-        <ol class="breadcrumb justify-content-center">
-          {% comment %} <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-          <li class="breadcrumb-item active">Order confirmed        </li> {% endcomment %}
-        </ol>
-      </div>
-    </section> 
-    <section class="pb-5 mt-5">
-      <div class="container text-center jumbotron">
-        <div class="row">
+    <section>
+      <div class="container-fluid px-5">
+        <div class="row text-center jumbotron">
 
           <div class="col-md-6 offset-md-3 ">
-            <div class="bg-white p-5 card">
+            <div class="bg-white p-5 card shadow-lg rounded">
               <div class="icon-rounded bg-primary mb-3 mx-auto text-white">
                 <svg xmlns="http://www.w3.org/2000/svg" class="svg-icon w-2rem h-2rem align-middle" viewBox="0 0 64 64" id="checkmark-1" width="100%" height="100%">
                   <title>Checkmark</title>
@@ -25,7 +16,7 @@
                 </svg>
               </div>
               <h4 class="mb-3 ff-base">Hi! Julie. we took your order.</h4>
-              <p class="text-muted mb-5">we just send you an sms also!!.</p>
+              <p class="text-muted mb-5">we just send you an <span class="h5">sms</span> also!!.</p>
               <p> <a href="{% url 'order_detail' %}" class="btn btn-outline-dark">Take your receipt!.</a></p>
             </div>
           </div>
