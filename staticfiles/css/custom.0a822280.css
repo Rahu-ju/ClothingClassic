@@ -31,3 +31,12 @@
 .iconFacebook{
     stroke: none !important;
 }
+
+/* meterial design lite custom */
+.mdl-textfield__label{  
+    margin-bottom:0px;
+  }
+  .mdl-textfield{
+    width: auto !important;
+    width: 100% !important;
+  }

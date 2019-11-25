@@ -20,8 +20,7 @@
     <link rel="stylesheet" href="{% static 'vendor/owl.carousel/assets/owl.carousel.css' %}">
     <!-- Ekko Lightbox-->
     <link rel="stylesheet" href="{% static 'vendor/ekko-lightbox/ekko-lightbox.css' %}">
-    <!-- theme stylesheet-->
-    <link rel="stylesheet" href="{% static 'css/style.default.ac2b889b.css' %}" id="theme-stylesheet">
+    
     <!-- Custom stylesheet - for your changes-->
     <link rel="stylesheet" href="{% static 'css/custom.0a822280.css' %}">
     <!-- Favicon-->
@@ -34,6 +33,13 @@
     <link rel="stylesheet" href="{% static 'fontawesome/regular.css' %}">
     <link rel="stylesheet" href="{% static 'fontawesome/brands.css' %}">
     <link rel="stylesheet" href="{% static 'fontawesome/fontawesome.css' %}">
+    <!-- material design lite for web -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="{% static 'css/material-design-lite.min.css' %}">
+    <!-- theme stylesheet-->
+    <link rel="stylesheet" href="{% static 'css/style.default.ac2b889b.css' %}" id="theme-stylesheet">
+      
+  
   </head>
   <body>
     {% comment %} <header class="header header-absolute">
@@ -190,56 +196,24 @@
       </form>
       <p class="text-muted">Stylesheet switching is done with JavaScript and can cause a blink while page loads. This will not happen in your production code.</p>
     </div>
-    <!-- JavaScript files-->
-    <script>
-      // ------------------------------------------------------- //
-      //   Inject SVG Sprite - 
-      //   see more here 
-      //   https://css-tricks.com/ajaxing-svg-sprite/
-      // ------------------------------------------------------ //
-      function injectSvgSprite(path) {
-      
-          var ajax = new XMLHttpRequest();
-          ajax.open("GET.html", path, true);
-          ajax.send();
-          ajax.onload = function(e) {
-          var div = document.createElement("div");
-          div.className = 'd-none';
-          div.innerHTML = ajax.responseText;
-          document.body.insertBefore(div, document.body.childNodes[0]);
-          }
-      }
-      // this is set to Bootstrapious website as you cannot 
-      // inject local SVG sprite (using only 'icons/orion-svg-sprite.a4dea202.svg' path)
-      // while using file:// protocol
-      // pls don't forget to change to your domain :)
-	    var path = "http://0.0.0.0:8000/staticfiles/icons/orion-svg-sprite.a4dea202.svg"
-      injectSvgSprite(path); 
-      
-    </script>
+    
+
+
     <!-- jQuery-->
     <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
-    <!-- Bootstrap JavaScript Bundle (Popper.js included)-->
-    <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
-    <!-- Owl Carousel-->
-    <script src="{% static 'vendor/owl.carousel/owl.carousel.js' %}"></script>
-    <script src="{% static 'vendor/owl.carousel2.thumbs/owl.carousel2.thumbs.min.js' %}"></script>
-    <!-- NoUI Slider (price slider)-->
-    <script src="{% static 'vendor/nouislider/nouislider.min.js' %}"></script>
     <!-- Smooth scrolling-->
     <script src="{% static 'vendor/smooth-scroll/smooth-scroll.polyfills.min.js' %}"></script>
-    <!-- Lightbox -->
-    <script src="{% static 'vendor/ekko-lightbox/ekko-lightbox.min.js' %}"></script>
-    <!-- Object Fit Images - Fallback for browsers that don't support object-fit-->
-    <script src="{% static 'vendor/object-fit-images/ofi.min.js' %}"></script>
-    <script>
-      var basePath = '{% static "" %}'
-      
-    </script>
     <script src="{% static 'js/theme.1cfe87dd.js' %}"></script>
-    <script src="{% static 'vendor/jquery.cookie/jquery.cookie.js' %}"> </script>
-    <script src="{% static 'js/demo.36f8799a.js' %}"></script>
+    <!-- materials design lite js -->
+    <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+    <script>
+    
+    
+    </script>
+    
+
     {% block jquery %}
+     
     {% endblock jquery %}
   </body>
 </html>

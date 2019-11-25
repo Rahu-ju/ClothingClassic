@@ -17,7 +17,9 @@
                     <div class="cart-item">
                       <div class="row d-flex align-items-center text-center">
                         <div class="col-6">
-                          <div class="d-flex align-items-center"><a href="detail.html"><img src="{{ item.product.get_image_url }}" alt="..." class="cart-item-img"></a>
+                          {% if item.product.get_image_url %}
+                            <div class="d-flex align-items-center"><a href="detail.html"><img src="{{ item.product.get_image_url }}" alt="..." class="cart-item-img"></a>
+                          {% endif %}
                             <div class="cart-title text-left"><a href="detail.html" class="text-uppercase text-dark"><strong>{{ item.product.title }}</strong></a><br><span class="text-muted text-sm">Size: {{ item.size }}</span><br><span class="text-muted text-sm">Colour: {{ item.color }}</span>
                             </div>
                           </div>

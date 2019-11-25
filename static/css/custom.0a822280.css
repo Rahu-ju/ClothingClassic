@@ -32,7 +32,19 @@
     stroke: none !important;
 }
 
-/* input field amount in the address section */
-input.amount{
-    width: 50%;
+
+/* meterial design lite custom */
+.mdl-textfield__label{  
+    margin-bottom:0px;
+  }
+  .mdl-textfield{
+    width: auto !important;
+    width: 100% !important;
+  }
+
+body{
+
+}
+p{
+line-height: 1.5 !important;
 }

@@ -7,8 +7,7 @@ class OrderAddressForm(ModelForm):
         model = OrderAddress
         fields = '__all__'
         widgets = {
-            "name": TextInput(attrs={"placeholder": "Your nick name",
-                                    "class": "form-control",}),
+            "name": TextInput(attrs={"class": "mdl-textfield__input",}),
             "phone": NumberInput(attrs={"placeholder": "Your phone number",
                                     "class": "form-control",}),                           
             "address": Textarea(attrs={"placeholder": "You will get your products to this address.",
