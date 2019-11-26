@@ -1,4 +1,5 @@
 {% extends 'custom_base.html' %}
+{% load static %}
 {% block title %} Direct checkout{% endblock title %}
 {% block content %}
 
@@ -18,36 +19,24 @@
           
           <div class="col-lg-4">
 
-            <div class="block mb-5 bg-white shadow">
-              <div class="block-header">
-                <h6 class="text-uppercase mb-0">Order Summary</h6>
+            <!-- Square card -->
+            <div class="demo-card-square mdl-card mdl-shadow--2dp">
+              <div class="mdl-card__title mdl-card--expand" style="background:
+                url('{% static "img/courier.png" %}') bottom right no-repeat;">
               </div>
-              <div class="block-body pt-1">
-                <p class="text-sm">Shipping and additional costs are calculated based on values you have entered.</p>
-                <ul class="order-summary mb-0 list-unstyled">
-                  <li class="order-summary-item"><span>Order Subtotal </span><span>$390.00</span></li>
-                  <li class="order-summary-item"><span>Shipping and handling</span><span>$10.00</span></li>
-                  <li class="order-summary-item"><span>Tax</span><span>$0.00</span></li>
-                  <li class="order-summary-item border-0"><span>Total</span><strong class="order-summary-total">$400.00</strong></li>
-                </ul>
+              <div class="card-rail-header mt-3">Get delivery on us</div>
+              <div class="card-rail-normal">Basic, no-rush delivery free</div>
+              <div class="card-rail-sep my-3"></div>
+              <div class="card-rail-header ">Check your shipping address</div>
+              <div class="card-rail-normal ">Make sure that your order is going to<br> the right place</div>
+              <div class="card-rail-sep my-3"></div>
+              <div>
+                <div class="card-rail-header ">Need help with your order?</div>
+                <div class="card-rail-normal mb-3">Start a chat or give us a call</div>
               </div>
-            </div>
-            {% comment %} delivery information section {% endcomment %}
-            <div class="block mb-5 shadow">
-              <div class="block-header">
-                <h6 class="text-uppercase mb-0">Delivey Method</h6>
-              </div>
-              <div class="block-body bg-light pt-1 bg-white">
-                <p class="text-md">You will get the product at your address.</p>
-                {% comment %} <ul class="order-summary mb-0 list-unstyled">
-                  <li class="order-summary-item"><span>Order Subtotal </span><span>$390.00</span></li>
-                  <li class="order-summary-item"><span>Shipping and handling</span><span>$10.00</span></li>
-                  <li class="order-summary-item"><span>Tax</span><span>$0.00</span></li>
-                  <li class="order-summary-item border-0"><span>Total</span><strong class="order-summary-total">$400.00</strong></li>
-                </ul> {% endcomment %}
-              </div>
-            </div>
 
+            </div>
+            
           </div>
           <div class="col-md-1"></div>
         </div>
