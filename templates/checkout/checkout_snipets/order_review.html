@@ -1,33 +1,29 @@
             <span class="" id="order-review-section">
-            <div class="bg-light mb-5 bg-white mdl-shadow--2dp">
+            <div class="bg-light mb-3 bg-white mdl-shadow--2dp">
               <div class="cart">
                 <div class="cart-wrapper">
-                  <div class="cart-header text-center">
-                    <div class="row">
-                      <div class="col-6">Item</div>
-                      <div class="col-2">Price</div>
-                      <div class="col-2">Quantity</div>
-                      <div class="col-2 pl-4">Total</div>
-                    </div>
-                  </div>
                   <div class="cart-body">
 
-                  {% for item in product_items %}
                     <!-- Product-->
+                    {% for item in product_items %}
                     <div class="cart-item">
                       <div class="row d-flex align-items-center text-center">
-                        <div class="col-6">
+                        <div class="col-9">
                           {% if item.product.get_image_url %}
                             <div class="d-flex align-items-center"><a href="detail.html"><img src="{{ item.product.get_image_url }}" alt="..." class="cart-item-img"></a>
                           {% endif %}
-                            <div class="cart-title text-left"><a href="detail.html" class="text-uppercase text-dark"><strong>{{ item.product.title }}</strong></a><br><span class="text-muted text-sm">Size: {{ item.size }}</span><br><span class="text-muted text-sm">Colour: {{ item.color }}</span>
+                            <div class="cart-title text-left"><a href="detail.html" class="text-uppercase text-dark"><strong>{{ item.product.title }}</strong></a><br>
+                              {% if item.size %}
+                                <span class="text-muted text-sm">Size: {{ item.size }}</span><br>
+                              {% endif %}
+                              {% if item.color %}
+                                <span class="text-muted text-sm">Colour: {{ item.color }}</span><br>
+                              {% endif %}
+                              <span class="text-muted text-sm">Quantity: {{ item.quantity }}</span>
                             </div>
                           </div>
                         </div>
-                        <div class="col-2">${{ item.product.price }}</div>
-                        <div class="col-2">{{ item.quantity }}
-                        </div>
-                        <div class="col-2 text-center">${{ item.line_total }}</div>
+                        <div class="col-3 text-center">${{ item.line_total }}</div>
                       </div>
                     </div>
                   {% endfor %}
@@ -36,7 +32,7 @@
                 </div>
                 
               </div>
-              <div class="mb-5 d-flex justify-content-between flex-column flex-lg-row"><a href="checkout3.html" class="btn btn-link text-muted"></a><a href="#payment-method" class="btn btn-dark" id="choose-payment-options">choose payment options<i class="fa fa-angle-down ml-2"></i></a></div>
+              {% comment %} <div class="mb-5 d-flex justify-content-between flex-column flex-lg-row"><a href="checkout3.html" class="btn btn-link text-muted"></a><a href="#payment-method" class="btn btn-dark" id="choose-payment-options">choose payment options<i class="fa fa-angle-down ml-2"></i></a></div> {% endcomment %}
             </div>
           </span>
             

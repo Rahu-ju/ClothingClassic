@@ -1,22 +1,21 @@
             <span class="" id="payment-method">
-            <div class="mb-5 mdl-shadow--2dp">
+            <div class="mdl-shadow--2dp bg-white">
+
               <div id="accordion" role="tablist">
 
-                <div class="block mb-3 bg-white">
-                  <div id="headingThree" role="tab" class="block-header"><strong><a data-toggle="collapse" href="#collapseThree" aria-expanded="true" aria-controls="collapseThree" class="accordion-link collapsed">Pay on delivery</a></strong></div>
+                <div class="block mb-3">
+                  <div id="headingThree" role="tab" class="block-header"><strong><a data-toggle="collapse" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree" class="accordion-link collapsed">Pay on delivery</a></strong></div>
                   <div id="collapseThree" role="tabpanel" aria-labelledby="headingThree" data-parent="#accordion" class="collapse show">
                     <div class="block-body py-5 d-flex align-items-center">
-                      {% comment %} <input type="radio" name="shippping" id="payment-method-2"> {% endcomment %}
-                      <label for="payment-method-2" class="ml-3">
-                        <p class="text-md"> Pay when you get your product at your hand.</p>
-                        {% comment %} <span class="text-muted text-sm">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</span> {% endcomment %}
+                      <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="option-1">
+                        <input type="radio" id="option-1" class="mdl-radio__button" name="options" value="1">
+                        <span class="mdl-radio__label">Pay on delivery</span>
                       </label>
                     </div>
                   </div>
                 </div>
 
-
-                {% comment %} <div class="block mb-3">
+                <div class="block mb-3">
                   <div id="headingOne" role="tab" class="block-header"><strong><a data-toggle="collapse" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne" class="accordion-link">Credit Card</a></strong></div>
                   <div id="collapseOne" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordion" class="collapse">
                     <div class="block-body">
@@ -52,15 +51,61 @@
                   <div id="headingTwo" role="tab" class="block-header"><strong><a data-toggle="collapse" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo" class="accordion-link collapsed">Paypal</a></strong></div>
                   <div id="collapseTwo" role="tabpanel" aria-labelledby="headingTwo" data-parent="#accordion" class="collapse">
                     <div class="block-body py-5 d-flex align-items-center">
-                      <input type="radio" name="shippping" id="payment-method-1">
-                      <label for="payment-method-1" class="ml-3"><strong class="d-block text-uppercase mb-2"> Pay with PayPal</strong><span class="text-muted text-sm">Lorem ipsum dolor sit amet, consectetur adipisicing elit.                                          </span></label>
+                      <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="paypal">
+                        <input type="radio" id="paypal" class="mdl-radio__button" name="options" value="1">
+                        <span class="mdl-radio__label">Pay with paypal</span>
+                      </label>
                     </div>
                   </div>
-                </div> {% endcomment %}
+                </div>
+                <hr>
 
-                
+                <div class="row">
+                  <div class="col float-right mx-3">
+                    <table class="float-right text-right">
+                      <tbody>
+
+                        <tr>
+                          <td>Subtotal</td>
+                          <td class="pl-3">$233</td>
+                        </tr>
+
+                        <tr>
+                          <td>tax</td>
+                          <td>$0</td>
+                        </tr>
+
+                        <tr>
+                          <td>Total</td>
+                          <td>$233</td>
+                        </tr>
+
+                      </tbody>
+                    </table>
+                  
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col mx-3 mt-3">
+                    <p class="card-text text-sm" >By clicking "CONFIRM ORDER", you agree to the why Store Sales Terms.</p>
+                    <p class="card-text" >
+                      <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="checkbox-1">
+                        <input type="checkbox" id="checkbox-1" class="mdl-checkbox__input" checked>
+                        <span class="mdl-checkbox__label">Please send me why Store special offers and newsworthy updates.</span>
+                      </label>
+                    </p>
+                    <p class="text-sm" >By continuing, you create a Google payments account and agree to Privacy Notice and Google Payments Terms of Service.</p>
+
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col">
+                    <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--primary float-right mr-3 mb-3"> Confirm order</button>
+                  </div>
+                </div>
 
               </div>
-              <div class="mb-5 d-flex justify-content-between flex-column flex-lg-row"><a href="checkout2.html" class="btn btn-link text-muted"></a><a href="{% url 'order_confirm' %}" class="btn btn-dark"> Give an order<i class="fa fa-angle-right ml-2"></i></a></div>
             </div>
           </span>

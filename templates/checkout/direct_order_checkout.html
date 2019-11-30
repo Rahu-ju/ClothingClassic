@@ -9,10 +9,10 @@
         <div class="row jumbotron ">
           <div class="col-md-1"></div>
           <div class="col-lg-6">
+            {% include 'checkout/checkout_snipets/order_review.html' %}
             <form action="" method="post">{% csrf_token %}
                 {% include 'checkout/checkout_snipets/address.html' %}
                 {% comment %} {% include 'checkout/checkout_snipets/delivery_method.html' %} {% endcomment %}
-                {% include 'checkout/checkout_snipets/order_review.html' %}
                 {% include 'checkout/checkout_snipets/payment_method.html' %}
             </form>
           </div>
@@ -46,11 +46,11 @@
 {% block jquery %}
 <script>
 //scroll to top part of the section 
-$('#review-your-order').on('click', function (e) {
-  $('html,body').animate({
-      scrollTop: $('#order-review-section').offset().top -80
-  }, 500); 
-}); 
+  //$('#review-your-order').on('click', function (e) {
+    //$('html,body').animate({
+     //   scrollTop: $('#order-review-section').offset().top -80
+  //  }, 500); 
+  //}); 
 
 //$('#review-the-order').on('click', function (e) {
 //  $('html,body').animate({
@@ -58,11 +58,11 @@ $('#review-your-order').on('click', function (e) {
 //  }, 500); 
 //});
 
-$('#choose-payment-options').on('click', function (e) {
-  $('html,body').animate({
-      scrollTop: $('#payment-method').offset().top -80
-  }, 500); 
-});
+//$('#choose-payment-options').on('click', function (e) {
+  //$('html,body').animate({
+  //    scrollTop: $('#payment-method').offset().top -80
+  //}, 500); 
+//});
 
 </script>
 
