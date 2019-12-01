@@ -58,7 +58,8 @@ line-height: 1.5 !important;
 
 .card-rail-header {
     color: #444;
-    font-family: Roboto,Arial,sans-serif;
+    /* font-family: Roboto,Arial,sans-serif; */
+    font-family: "HK Grotesk",sans-serif;
     font-size: 16px;
     font-weight: 500;
     line-height: 1.3;
@@ -66,7 +67,8 @@ line-height: 1.5 !important;
 }
 .card-rail-normal {
     color: #777;
-    font-family: Roboto,Arial,sans-serif;
+    /* font-family: Roboto,Arial,sans-serif; */
+    font-family: "HK Grotesk",sans-serif;
     font-size: 14px;
     font-weight: 400;
     line-height: 1.4;
@@ -76,4 +78,16 @@ line-height: 1.5 !important;
     border-top: 1px solid #ddd;
     margin-left: 20%;
     width: 60%;
+}
+/* material design navbar */
+.mdl-layout__header{
+    background-color: #fff !important;
+    color: #3c4043 !important;
+}
+.mdl-navigation__link{
+    color: #3c4043 !important;
+}
+
+.mdl-layout__drawer-button{
+    color: #3c4043 !important;
 }
