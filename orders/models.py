@@ -16,7 +16,7 @@ class OrderAddress(models.Model):
     email = models.EmailField(max_length=254, null=True, blank=True)
 
     def __str__(self):
-        return str(self.phone)
+        return str(self.address)
 
 
 
