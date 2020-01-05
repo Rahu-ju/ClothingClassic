@@ -57,8 +57,6 @@ def checkout(request):
             return HttpResponseRedirect(reverse('cart'))
 
         
-
-        # assign address
         # run credit card
         # del cart from the session when order is finfished by admin.
         if new_order.status == 'Finished':
@@ -66,7 +64,7 @@ def checkout(request):
             del request.session['items_total']
             return HttpResponseRedirect(reverse('cart'))
 
-        return HttpResponseRedirect(reverse())
+        return HttpResponseRedirect(reverse('order_confirmed'))
 
     context = {"product_items": product_items, }
     

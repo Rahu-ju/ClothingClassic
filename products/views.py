@@ -23,7 +23,7 @@ def home(request):
     except:
         feature_liquid = None
     
-    template = 'home.html'
+    template = 'homes/home.html'
     context = {"sliders": sliders, 
                 "feature_cloth": feature_cloth,
                 "feature_liquid": feature_liquid}

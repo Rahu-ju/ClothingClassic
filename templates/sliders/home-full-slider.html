@@ -1,14 +1,14 @@
 {% load static %}
 <!-- Hero Section-->
-    <section class="home-full-slider-wrapper mb-10px">
+    <section class="home-full-slider-wrapper">
       <!-- Hero Slider-->
       <div class="owl-carousel owl-theme owl-dots-modern home-full-slider">
         {% if sliders %}
           {% for slider in sliders %}
             <div style="background: #f8d5cf;" class="item home-full-item bg-dark dark-overlay">
-            
-              <img src="{{ slider.image.url }}" alt="" class="bg-image">
-            
+              {% if slider.image.url %}
+                <img src="{{ slider.image.url }}" alt="" class="bg-image">
+              {% endif %}
               <div class="container-fluid h-100 py-5">
                 <div class="row align-items-center h-100">
                   <div class="col-lg-8 col-xl-6 mx-auto text-white text-center overlay-content">
