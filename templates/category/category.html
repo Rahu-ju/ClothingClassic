@@ -3,19 +3,13 @@
 {% block content %}
     <!-- Hero Section-->
     <section class="hero">
-      <div class="container">
+      <div class="container pb-5">
         <!-- Breadcrumbs -->
         <ol class="breadcrumb justify-content-center">
-          <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-          <li class="breadcrumb-item active">Jackets and tops        </li>
+          <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
+          <li class="breadcrumb-item active">All products</li>
         </ol>
-        <!-- Hero Content-->
-        <div class="hero-content pb-5 text-center">
-          <h1 class="hero-heading">Jackets and tops</h1>
-          <div class="row">   
-            <div class="col-xl-8 offset-xl-2"><p class="lead text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.</p></div>
-          </div>
-        </div>
+        
       </div>
     </section>
     <div class="container">
@@ -23,12 +17,13 @@
         <!-- Grid -->
         <div class="products-grid col-xl-9 col-lg-8 order-lg-2">
           <header class="product-grid-header">
-            <div class="mr-3 mb-3">
-               
+
+            {% comment %} <div class="mr-3 mb-3">
               Showing <strong>1-12 </strong>of <strong>158 </strong>products
             </div>
             <div class="mr-3 mb-3"><span class="mr-2">Show</span><a href="#" class="product-grid-header-show active">12    </a><a href="#" class="product-grid-header-show ">24    </a><a href="#" class="product-grid-header-show ">All    </a>
-            </div>
+            </div> {% endcomment %}
+            
             <div class="mb-3 d-flex align-items-center"><span class="d-inline-block mr-1">Sort by</span>
               <select class="custom-select w-auto border-0">
                 <option value="orderby_0">Default</option>
