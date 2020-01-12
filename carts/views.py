@@ -9,7 +9,7 @@ from .models import Cart, CartItem
 from .view_helper_functions import retrived_product,retrived_cart, update_cart_total, update_cartitem
 
 
-def view(request):
+def cart(request):
     '''Get the cart id from the session, retrive the cart
     from the database and then pass it to the context dict.'''
 
@@ -50,13 +50,15 @@ def add_to_cart(request, slug):
 
 
 def remove_from_cart(request, pk):
+
     cart = retrived_cart(request)
     cart_item = CartItem.objects.filter(cart=cart, pk=pk)
     cart_item.delete()
     # message
     update_cart_total(request, cart)
-
+    
     return HttpResponseRedirect(reverse('cart'))
+
 
 
 def update_cart_item(request):

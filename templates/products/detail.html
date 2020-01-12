@@ -38,7 +38,8 @@
                     <li class="list-inline-item mr-0"><i class="fa fa-star text-primary"></i></li>
                     <li class="list-inline-item mr-0"><i class="fa fa-star text-primary"></i></li>
                     <li class="list-inline-item mr-0"><i class="fa fa-star text-gray-300"></i></li>
-                  </ul><span class="text-muted text-uppercase text-sm">25 reviews</span>
+                  </ul>
+                  {% comment %} <span class="text-muted text-uppercase text-sm">25 reviews</span> {% endcomment %}
                 </div>
               </div>
               <p class="mb-4 text-muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco</p>
@@ -101,7 +102,7 @@
                   <li class="list-inline-item">
                     <button type="submit" class="btn btn-dark btn-lg mb-1"> <i class="fa fa-shopping-cart mr-2"></i>Add to Cart</button>
                   </li>
-                  <li class="list-inline-item"><a href="#" class="btn btn-outline-secondary mb-1"> <i class="far fa-heart mr-2"></i>Add to wishlist</a></li>
+                  {% comment %} <li class="list-inline-item"><a href="#" class="btn btn-outline-secondary mb-1"> <i class="far fa-heart mr-2"></i>Add to wishlist</a></li> {% endcomment %}
                 </ul>
               </form>
             </div>
@@ -109,7 +110,8 @@
         </div>
       </div>
     </section>
-    <section class="mt-5">
+    
+    {% comment %} <section class="mt-5">
       <div class="container">
         <ul role="tablist" class="nav nav-tabs flex-column flex-sm-row">
           <li class="nav-item"><a data-toggle="tab" href="#description" role="tab" class="nav-link detail-nav-link active">Description</a></li>
@@ -354,5 +356,5 @@
           <!-- /product-->
         </div>
       </div>
-    </section>
+    </section> {% endcomment %}
 {% endblock content %}

@@ -1,6 +1,7 @@
 {% extends 'bases/base.html' %}
 {% load static %}
 {% block content %}
+    {% if not empty or not cart.caritem_set.all %}
     <!-- Hero Section-->
     <section class="hero">
       <div class="container">
@@ -9,23 +10,21 @@
           <li class="breadcrumb-item"><a href="index.html">Home</a></li>
           <li class="breadcrumb-item active">Shopping cart        </li>
         </ol>
+
         <!-- Hero Content-->
         <div class="hero-content pb-5 text-center">
           <h1 class="hero-heading">Shopping cart</h1>
           <div class="row">   
             <div class="col-xl-8 offset-xl-2">
-              {% if empty %}
-                <p class="lead text-muted">Your shopping cart is empty.</p>
-              {% else %}
                 <p class="lead text-muted">You have {{cart.cartitem_set.all.count }} items in your shopping cart</p>
-              {% endif %}
             </div>
           </div>
         </div>
+
       </div>
     </section>
     <!-- Shopping Cart Section-->
-    {% if not empty %}
+    
     <section>
       <div class="container">
         <div class="row mb-5"> 
@@ -70,52 +69,12 @@
                         </div>
                       </div>
                       <div class="col-2 text-center">$<span id='line_total'>{{ item.line_total }}</span></div>
-                      <div class="col-1 text-center"><a href="{% url 'remove_from_cart' item.id %}" class="cart-remove"> <i class="material-icons">delete_sweep</i></a></div>
+                      <div class="col-1 text-center"><a href="{% url 'remove_from_cart' item.id %}" class="cart-remove" id="{{item.id}}"><i class="material-icons delete-icon" id="{{item.id}}">delete_sweep</i></a></div>
                     </div>
                   </div>
                   <!-- Product-->
                   {% endfor %}
-                  <div class="cart-item">
-                    <div class="row d-flex align-items-center text-center">
-                      <div class="col-5">
-                        <div class="d-flex align-items-center"><a href="detail.html"><img src="../../../d19m59y37dris4.cloudfront.net/sell/1-2-5/img/product/product-square-kyle-loftus-596319-unsplash.f62698ea.jpg" alt="..." class="cart-item-img"></a>
-                          <div class="cart-title text-left"><a href="detail.html" class="text-uppercase text-dark"><strong>Transparent Blouse</strong></a><br><span class="text-muted text-sm">Size: Medium</span>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-2">$55.00</div>
-                      <div class="col-2">
-                        <div class="d-flex align-items-center">
-                          <div class="btn btn-items btn-items-decrease">-</div>
-                          <input type="text" value="3" class="form-control text-center input-items">
-                          <div class="btn btn-items btn-items-increase">+</div>
-                        </div>
-                      </div>
-                      <div class="col-2 text-center">$165.00</div>
-                      <div class="col-1 text-center"><a href="#" class="cart-remove"> <i class="fa fa-times"></i></a></div>
-                    </div>
-                  </div>
-                  <!-- Product-->
-                  <div class="cart-item">
-                    <div class="row d-flex align-items-center text-center">
-                      <div class="col-5">
-                        <div class="d-flex align-items-center"><a href="detail.html"><img src="../../../d19m59y37dris4.cloudfront.net/sell/1-2-5/img/product/product-square-serrah-galos-494312-unsplash.5c3f03cf.jpg" alt="..." class="cart-item-img"></a>
-                          <div class="cart-title text-left"><a href="detail.html" class="text-uppercase text-dark"><strong>White Tee</strong></a><br><span class="text-muted text-sm">Size: Medium</span>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-2">$55.00</div>
-                      <div class="col-2">
-                        <div class="d-flex align-items-center">
-                          <div class="btn btn-items btn-items-decrease">-</div>
-                          <input type="text" value="3" class="form-control text-center input-items">
-                          <div class="btn btn-items btn-items-increase">+</div>
-                        </div>
-                      </div>
-                      <div class="col-2 text-center">$165.00</div>
-                      <div class="col-1 text-center"><a href="#" class="cart-remove"> <i class="fa fa-times"></i></a></div>
-                    </div>
-                  </div>
+                  
                 </div>
               </div>
             </div>
@@ -140,7 +99,30 @@
         </div>
       </div>
     </section>
+  {% else %}
+  <!-- Hero Section-->
+    <section class="hero">
+      <div class="container">
+        <!-- Breadcrumbs -->
+        <ol class="breadcrumb justify-content-center">
+          <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+          <li class="breadcrumb-item active">Shopping cart        </li>
+        </ol>
+
+        <!-- Hero Content-->
+        <div class="hero-content pb-5 text-center">
+          <h1 class="hero-heading">Shopping cart</h1>
+          <div class="row">   
+            <div class="col-xl-8 offset-xl-2">
+                <p class="lead text-muted">Your shopping cart is empty.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
   {% endif %}
+
 {% endblock content %}
 {% block jquery %}
 <script>
@@ -187,6 +169,39 @@
     ajax_call(-1);
   });
 
+// Delete cart item using ajax request
+
+{% comment %} $('.cart-remove').click(function(e){
+  e.preventDefault();
+  delete_cartitem_ajax($(this).attr("id"))
+})
+
+function delete_cartitem_ajax(value){
+  var pk = value
+  $.ajax({
+    type: "GET",
+    url: "{% url 'remove_from_cart' %}",
+    data: {'pk': pk},
+    success: function(data){
+      console.log(data)
+    },
+    error: function(xhr,status,error){
+      console.log(xhr,status,error);
+    }
+
+  });
+};
+
+  {% endcomment %}
+
+//experiment successful
+{% comment %} function experiment(value){
+ console.log(value)
+}
+
+$(".delete-icon").click(function(){
+  experiment($(this).attr('id'));
+}) {% endcomment %}
  
 </script>
 {% endblock jquery %}

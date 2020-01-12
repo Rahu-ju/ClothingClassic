@@ -30,8 +30,8 @@ def home(request):
     return render(request, template, context)
 
 
-def category(request):
-    template = 'category/category.html'
+def products(request):
+    template = 'products/all_products.html'
 
     # retrive products from the database
     try:
@@ -42,7 +42,7 @@ def category(request):
         raise Http404
     
 def detail(request, slug):
-    template = 'detail.html'
+    template = 'products/detail.html'
 
     # retrive the product(using slug) from the database
     try:
