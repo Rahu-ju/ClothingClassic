@@ -59,6 +59,7 @@ INSTALLED_APPS = [
     'directOrders.apps.DirectordersConfig',
     'accounts.apps.AccountsConfig',
     'marketing.apps.MarketingConfig',
+    'blog.apps.BlogConfig',
 
     # third party apps
     'storages',
