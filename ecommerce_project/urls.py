@@ -14,11 +14,15 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
+from django.urls import path, include, re_path
+
+
 
 urlpatterns = [
+
+    # Admin urls 
     path('admin/', admin.site.urls),
 
     # account
@@ -42,6 +46,11 @@ urlpatterns = [
 
     # blog app
     path('blog/', include('blog.urls')),
+
+    # ckeditor file upload
+    re_path(r'^ckeditor/', include('ckeditor_uploader.urls')),
+
+    
 ]
 
 # Load static files in local development

@@ -1,6 +1,9 @@
 from django.conf import settings 
 from django.db import models
 
+from ckeditor_uploader.fields import RichTextUploadingField
+
+
 # Create your models here.
 def upload_blog_image(instance, filename):
     return 'blog/images/%s/%s' % (instance.id, filename)
@@ -27,7 +30,8 @@ class Post(models.Model):
 
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, null=True, blank=True)
     title = models.CharField(max_length=50)
-    description = models.TextField(max_length=200)
+    # description = models.TextField(max_length=200)
+    description = RichTextUploadingField()
     image = models.ImageField(upload_to=upload_blog_image)
     date = models.DateField(auto_now=False, auto_now_add=True)
     comment = models.ForeignKey(settings.AUTH_USER_MODEL, related_name='post_comments', on_delete=models.CASCADE, null=True, blank=True)

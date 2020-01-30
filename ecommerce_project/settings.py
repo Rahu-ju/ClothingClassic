@@ -63,7 +63,11 @@ INSTALLED_APPS = [
 
     # third party apps
     'storages',
+    'ckeditor',
+    'ckeditor_uploader',
+
 ]
+
 SITE_ID = 1
 
 MIDDLEWARE = [
@@ -207,4 +211,9 @@ if ENVIRONMENT == 'production':
 import dj_database_url
 db_from_env = dj_database_url.config(conn_max_age=500)
 DATABASES['default'].update(db_from_env)
+
+
+# django ckeditor configuration
+CKEDITOR_BASEPATH = os.path.join(BASE_DIR, "/staticfiles_cdn/") + "ckeditor/ckeditor/"
+CKEDITOR_UPLOAD_PATH = "uploads/"
 
