@@ -166,8 +166,8 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'mediafiles')
 # STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # User upload files and product image storage in dropbox.
-DEFAULT_FILE_STORAGE = 'storages.backends.dropbox.DropBoxStorage'
-DROPBOX_OAUTH2_TOKEN = os.environ.get('D_OAUTH2_TOKEN')
+# DEFAULT_FILE_STORAGE = 'storages.backends.dropbox.DropBoxStorage'
+# DROPBOX_OAUTH2_TOKEN = os.environ.get('D_OAUTH2_TOKEN')
 
 # Telling django to use this Custom user model
 AUTH_USER_MODEL = 'users.CustomUser'
@@ -215,5 +215,7 @@ DATABASES['default'].update(db_from_env)
 
 # django ckeditor configuration
 CKEDITOR_BASEPATH = os.path.join(BASE_DIR, "/staticfiles_cdn/") + "ckeditor/ckeditor/"
-CKEDITOR_UPLOAD_PATH = "uploads/"
+CKEDITOR_UPLOAD_PATH = "ck_upload/"
+
+
 
